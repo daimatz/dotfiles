@@ -252,7 +252,7 @@ bindkey -M menuselect ' ' accept-line
 
 ## 色設定
 TERM=xterm-256color
-LANG=C perl ~/.zsh/256colors2.pl > /dev/null
+# LANG=C perl ~/.zsh/256colors2.pl > /dev/null
 
 unsetopt sh_wordsplit
 
