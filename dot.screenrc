@@ -1,0 +1,64 @@
+#
+# screen
+#
+
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+
+escape 
+bind  copy
+# escape 
+# bind  copy
+# hardstatus alwayslastline "%w"
+# hardstatus ignore "%w | %h"
+hardstatus alwayslastline "%{= dwk} %-w%{= yk}%n %t%{-}%+w"
+# hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w"
+
+bind c screen
+# bind  copy
+bind  copy
+bind y paste . # yank
+bind  paste .
+
+bind 2 split
+bind o focus # <TAB> も同じ
+bind 1 only
+bind 0 remove
+
+autodetach on
+
+startup_message off
+defscrollback 300000
+
+# コピーモードで Emacs like
+# http://d.hatena.ne.jp/l1o0/20100803/1280844729
+# やっぱ Vim like のほうがいいかも。でも少しだけ Emacs like で
+
+# # C-b 左, C-f 右, C-a 行頭, C-e 行末
+# # C-p 下, C-n 上, C-v 1ページ進む, M-v 1ページ戻る
+# # M-< バッファの先頭に移動, M-> バッファの最後に移動
+# markkeys h=:l=:0=:j=:k=:$=:=
+markkeys $=
+# bindkey -m v stuff P
+# bindkey -m < stuff g
+# bindkey -m > stuff G
+
+# # 行末までコピーする(C-k)
+# bindkey -m  stuff ' $ '
+
+# # C-g コピーモード終了
+bindkey -m  stuff !
+
+# # M-b, M-fで単語ごとに移動
+# bindkey -m b stuff B
+# bindkey -m f stuff E
+
+#  コピー。 ctrl-space は動かないので諦めた
+# bindkey -m ^' ' stuff ' '
+
+# # Xclip を使って、 X のクリップボードへ
+# # Space で選択開始、 M-w (または M-W) でコピー
+# bindkey -m ^[w eval 'msgwait 0' 'stuff \040' writebuf 'exec !!! xclip /tmp/screen-exchange' 'msgwait 1'
+# bindkey -m ^[W eval 'msgwait 0' 'stuff \040' writebuf 'exec !!! xclip /tmp/screen-exchange' 'msgwait 1'

@@ -1,0 +1,15 @@
+*.o
+*.lo
+*.la
+#*#
+.*~
+*~
+.#*
+.DS_Store
+*_flymake.*
+*.stackdump
+*.sw[po]
+GPATH
+GSYMS
+GRTAGS
+GTAGS

@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/dai/saiyo/src'
+let g:netrw_dirhist_2='/Users/dai/repo/mamemose/lib/mamemose'
+let g:netrw_dirhist_3='/Users/dai/Dropbox/memo/computer/fonts'
+let g:netrw_dirhist_4='/Users/dai/repo/tonque/Tonque'
+let g:netrw_dirhist_5='/Users/dai/repo/daimatz-yesod/app'
+let g:netrw_dirhist_6='/Users/dai/repo/daimatz-yesod/Settings'
+let g:netrw_dirhist_7='/Users/dai/repo/scotty-on-heroku/src/tpl'
+let g:netrw_dirhist_8='/Users/dai/repo/tonque/cabal-dev/bin'
+let g:netrw_dirhist_9='/Users/dai/repo/garuda/garuda-watcher/Job'
