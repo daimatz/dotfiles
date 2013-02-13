@@ -210,6 +210,7 @@ set listchars=tab:^\ ,trail:\ ,
 """Bundle
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimproc'
+NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'tpope/vim-markdown'
@@ -261,6 +262,8 @@ nmap <Space> [Prefix]
 " paste toggle
 set pastetoggle=<S-0>
 noremap [Prefix]p <S-0>
+
+nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
 
 " x, X キーでヤンクしない
 nnoremap x "_x
