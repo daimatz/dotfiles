@@ -6,6 +6,6 @@ ln -s $HOME/conf/dot.vim $HOME/.vim
 
 for i in $HOME/conf/dot.*; do
     if [ -f $i ]; then
-        ln -s $i $HOME/`basename $i | sed 's/^dot//'`
+        ln -sf $i $HOME/`basename $i | sed 's/^dot//'`
     fi
 done
