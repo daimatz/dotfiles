@@ -4,7 +4,7 @@ function err() {
 
 # /usr/local などと同様に認識させたいディレクトリ
 function make_path() {
-    LOCAL_DIR=("$HOME/local" "$HOME/brew" "$HOME/conf")
+    LOCAL_DIR=("$HOME/local" "$HOME/brew" "$HOME/dotfiles")
     str=""
     for i in $LOCAL_DIR; do
         [[ -d "$i/$1" ]] && str="$str$i/$1:"
