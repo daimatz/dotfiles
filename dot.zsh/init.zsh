@@ -12,43 +12,7 @@ function make_path() {
     echo $str
 }
 
-export LSCOLORS=ExFxCxdxBxegedabagacad
-export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export PATH=`make_path bin`$PATH
-export EDITOR=vim
-export LANG=ja_JP.UTF-8
-export PAGER=less
-
-# for heroku
-# Download Heroku Toolbelt standalone
-PATH=$PATH:/usr/local/heroku/bin
-
-# for zsh completion
-fpath=("$HOME/.zsh/functions" "${fpath[@]}")
-
-# for Ruby, migemo
-which rbenv &> /dev/null && eval "$(rbenv init -)"
-RUBY_VERSION=1.9
-export RUBYLIB=$HOME/local/lib/ruby/$RUBY_VERSION
-# rubygems
-export GEM_HOME=$HOME/.gem/$RUBY_VERSION
-export PATH=$GEM_HOME/bin:$PATH
-
-# for Perl
-export PERL5LIB=$HOME/local
-
-# for Haskell
-export PATH=$HOME/.cabal/bin:$PATH
-
-# alias for Mac
-LSOPTION='-F --color=auto --si --show-control-char'
-which gmv &> /dev/null && alias mv='gmv'
-if which gls &> /dev/null; then alias ls="gls $LSOPTION"
-else alias ls="ls $LSOPTION"; fi
-
 # alias
-[[ ! -d /tmp/trash ]] && mkdir /tmp/trash
-[[ ! -d /tmp/undo ]] && mkdir /tmp/undo
 alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
 alias here="open ."
 alias crontab='crontab -i'
@@ -64,6 +28,10 @@ alias -g G=' | grep'
 alias -g X=' | xargs'
 alias -g D=' | diff -wy -'
 alias -g XG=' -type f -print0 | xargs -0 grep '
+
+which gmv &> /dev/null && alias mv='gmv'
+if which gls &> /dev/null; then alias ls="gls $LSOPTION"
+else alias ls="ls $LSOPTION"; fi
 
 # そのプロセスがいなければ立ち上げる
 function run_unless() {
@@ -178,10 +146,6 @@ if [ `pwd` = "/" ]; then
 fi
 
 # zsh っぽい設定
-HISTFILE=~/.zsh_history # ヒストリ
-HISTSIZE=1000000
-SAVEHIST=1000000
-export WORDCHARS='*?[]~=&;!#$%^(){}<>'
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
 bindkey -e
@@ -207,15 +171,12 @@ zstyle ':chpwd:*' recent-dirs-max 5000
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*' recent-dirs-insert both
 
-# z.sh
-_Z_CMD=j
-_Z_NO_RESOLVE_SYMLINKS=1
 . $HOME/.zsh/z/z.sh
 
 # 補完
 # http://gihyo.jp/dev/serial/01/zsh-book/0005
 autoload -Uz colors; colors
-autoload -U compinit; compinit
+autoload -Uz compinit; compinit
 
 #setopt complete_aliases # エイリアス補完 # z.sh が動かないようなので
 setopt magic_equal_subst # = のあとパス名を補完
@@ -246,13 +207,10 @@ zstyle ':completion:*' completer _expand _complete _prefix _approximate _list
 
 # http://www.zsh.org/mla/users/2009/msg01019.html
 zmodload zsh/complist
-bindkey -M menuselect '' .accept-line # メニューの後1回の Enter で決定
+bindkey -M menuselect '
+' .accept-line # メニューの後1回の Enter で決定
 bindkey -M menuselect '[Z' reverse-menu-complete
 bindkey -M menuselect ' ' accept-line
-
-## 色設定
-TERM=xterm-256color
-# LANG=C perl ~/.zsh/256colors2.pl > /dev/null
 
 unsetopt sh_wordsplit
 
@@ -424,3 +382,48 @@ update_prompt() {
     RPROMPT=
 }
 add-zsh-hook precmd update_prompt
+
+# eval once
+if [ "$TERM" != "xterm-256color" ]; then
+    export HISTFILE=~/.zsh_history
+    export HISTSIZE=1000000
+    export SAVEHIST=1000000
+    export WORDCHARS='*?[]~=&;!#$%^(){}<>'
+
+    export LSCOLORS=ExFxCxdxBxegedabagacad
+    export LS_COLORS='di=01;36:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+    export LSOPTION='-F --color=auto --si --show-control-char'
+    export PATH=`make_path bin`$PATH
+    export EDITOR=vim
+    export LANG=ja_JP.UTF-8
+    export PAGER=less
+
+    export _Z_CMD=j
+    export _Z_NO_RESOLVE_SYMLINKS=1
+
+    # for heroku
+    # Download Heroku Toolbelt standalone
+    export PATH=$PATH:/usr/local/heroku/bin
+
+    # for Ruby, migemo
+    # eval "$(rbenv init -)" is too late
+    which rbenv &> /dev/null && export PATH="/Users/dai/.rbenv/shims:${PATH}"
+    RUBY_VERSION=1.9
+    export RUBYLIB=$HOME/local/lib/ruby/$RUBY_VERSION
+    # rubygems
+    export GEM_HOME=$HOME/.gem/$RUBY_VERSION
+    export PATH=$GEM_HOME/bin:$PATH
+
+    # for Perl
+    export PERL5LIB=$HOME/local
+
+    # for Haskell
+    export PATH=$HOME/.cabal/bin:$PATH
+
+    [[ ! -d /tmp/trash ]] && mkdir /tmp/trash
+    [[ ! -d /tmp/undo ]] && mkdir /tmp/undo
+
+    ## 色設定
+    TERM=xterm-256color
+    # LANG=C perl ~/.zsh/256colors2.pl > /dev/null
+fi
