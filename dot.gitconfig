@@ -42,7 +42,6 @@
     diff = h previous
     diff = L scroll-right
     diff = H scroll-left
-    diff = Enter !@sh -c 'echo %(commit) | cut -c 1-16 > $CLIPFILE'
     generic = ";" screen-redraw
     generic = Backspace view-close
 
