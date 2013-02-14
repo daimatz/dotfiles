@@ -5,6 +5,9 @@ set encoding=utf-8
 "行番号表示
 "set number
 
+"タブ
+set showtabline=2
+
 "括弧の対応表示時間
 set showmatch matchtime=1
 
@@ -217,6 +220,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'thinca/vim-tabrecent'
 filetype plugin on
 
 """neocomplcache.
@@ -283,6 +287,20 @@ vnoremap k gk
 " BS, SPC, h, l で行末・行頭を超えることができる
 set whichwrap=b,s,h,l,<,>,[,]
 
+" タブ
+nnoremap [TABCMD]  <NOP>
+nmap     t [TABCMD]
+nnoremap [TABCMD]f :<C-u>tabfirst<CR>
+nnoremap [TABCMD]l :<C-u>tablast<CR>
+nnoremap [TABCMD]n :<C-u>tabnext<CR>
+nnoremap [TABCMD]N :<C-u>tabNext<CR>
+nnoremap [TABCMD]p :<C-u>tabprevious<CR>
+nnoremap [TABCMD]e :<C-u>tabedit  <Backspace>
+nnoremap [TABCMD]c :<C-u>tabclose<CR>
+nnoremap [TABCMD]o :<C-u>tabonly<CR>
+nnoremap [TABCMD]s :<C-u>tabs<CR>
+nnoremap [TABCMD]r :<C-u>TabRecent<CR>
+
 " 右手だけでスクロールできるように
 nnoremap [Prefix]<Space> zz
 nnoremap [Prefix]j <C-f>
@@ -300,6 +318,8 @@ nnoremap : ;
 vnoremap : ;
 
 nnoremap // :<C-u>Migemo<CR>
+
+nnoremap * *N
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
