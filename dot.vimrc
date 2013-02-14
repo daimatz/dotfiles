@@ -312,6 +312,7 @@ nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
 noremap <C-e> $
 noremap <C-a> 0
 inoremap jj <ESC>
+cnoremap jj <ESC>
 nnoremap ; :
 vnoremap ; :
 nnoremap : ;
@@ -331,3 +332,12 @@ inoremap <C-e> <End>
 inoremap <C-d> <Delete>
 inoremap <C-h> <BS>
 inoremap <C-m> <Return>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-d> <Delete>
+cnoremap <C-h> <BS>
+cnoremap <C-m> <Return>
