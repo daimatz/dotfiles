@@ -3,7 +3,7 @@ scriptencoding utf-8
 set encoding=utf-8
 
 "行番号表示
-set number
+"set number
 
 "括弧の対応表示時間
 set showmatch matchtime=1
@@ -99,7 +99,7 @@ autocmd BufWritePre *.tex call s:replace_comma_dot()
 
 "Tab 幅
 set expandtab
-set tabstop=2
+set tabstop=4
 
 "検索の時に大文字小文字を区別しない
 "ただし大文字小文字の両方が含まれている場合は大文字小文字を区別する
@@ -122,11 +122,11 @@ set shellslash
 "自動的にインデントする
 set autoindent
 set smartindent
-set shiftwidth=2
+set shiftwidth=4
 "タイトルを非表示 (Thanks for flying Vim)
 set notitle
 "コマンドラインの高さ (gvimはgvimrcで指定)
-set cmdheight=2
+set cmdheight=1
 set laststatus=2
 "コマンドをステータス行に表示
 set showcmd
