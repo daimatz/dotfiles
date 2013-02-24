@@ -173,7 +173,8 @@ endif
 "NeoBundle 'altercation/vim-colors-solarized'
 "NeoBundle 'croaker/mustang-vim'
 "NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'nanotech/jellybeans.vim'
+"NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
 "NeoBundle 'vim-scripts/Lucius'
 "NeoBundle 'vim-scripts/Zenburn'
 "NeoBundle 'mrkn/mrkn256.vim'
@@ -191,7 +192,7 @@ if has('syntax')
   augroup BadSpace
     autocmd!
     " 背景色は #161616 (22,22,22) ぽいけど Mac では (18,18,18) で綺麗に見える？
-    colorscheme jellybeans
+    colorscheme hybrid
     "悪いスペース類
     autocmd VimEnter,WinEnter * match BadSpace /\(\s\+$\)\|　/
   augroup END
