@@ -142,9 +142,9 @@ syntax on
 "ステータスラインに文字コードやBOM、16進表示等表示
 "iconvが使用可能の場合、カーソル上の文字コードをエンコードに応じた表示にするFencB()を使用
 if has('iconv')
-  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=[0x%{FencB()}]\ (%l:%v)/%L%8P\
 else
-  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=\ (%v,%l)/%L%8P\
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=\ (%l:%v)/%L%8P\
 endif
 function! FencB()
   let c = matchstr(getline('.'), '.', col('.') - 1)
@@ -173,8 +173,8 @@ endif
 "NeoBundle 'altercation/vim-colors-solarized'
 "NeoBundle 'croaker/mustang-vim'
 "NeoBundle 'jeffreyiacono/vim-colors-wombat'
-"NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'nanotech/jellybeans.vim'
+"NeoBundle 'w0ng/vim-hybrid'
 "NeoBundle 'vim-scripts/Lucius'
 "NeoBundle 'vim-scripts/Zenburn'
 "NeoBundle 'mrkn/mrkn256.vim'
@@ -192,7 +192,7 @@ if has('syntax')
   augroup BadSpace
     autocmd!
     " 背景色は #161616 (22,22,22) ぽいけど Mac では (18,18,18) で綺麗に見える？
-    colorscheme hybrid
+    colorscheme jellybeans
     "悪いスペース類
     autocmd VimEnter,WinEnter * match BadSpace /\(\s\+$\)\|　/
   augroup END
