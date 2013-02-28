@@ -279,49 +279,52 @@ vnoremap X "_X
 " カーソルをj k では物理行で移動する。論理行移動は<C-n>,<C-p>
 nnoremap <Down> gj
 nnoremap <Up>   gk
-nnoremap j gj
-nnoremap k gk
+nnoremap j      gj
+nnoremap k      gk
 vnoremap <Down> gj
 vnoremap <Up>   gk
-vnoremap j gj
-vnoremap k gk
+vnoremap j      gj
+vnoremap k      gk
 " BS, SPC, h, l で行末・行頭を超えることができる
 set whichwrap=b,s,h,l,<,>,[,]
 
 " タブ
-nnoremap [TABCMD]  <NOP>
-nmap     t [TABCMD]
-nnoremap [TABCMD]f :<C-u>tabfirst<CR>
-nnoremap [TABCMD]l :<C-u>tablast<CR>
-nnoremap [TABCMD]n :<C-u>tabnext<CR>
-nnoremap [TABCMD]N :<C-u>tabNext<CR>
-nnoremap [TABCMD]p :<C-u>tabprevious<CR>
-nnoremap [TABCMD]e :<C-u>tabedit  <Backspace>
-nnoremap [TABCMD]c :<C-u>tabclose<CR>
-nnoremap [TABCMD]o :<C-u>tabonly<CR>
-nnoremap [TABCMD]s :<C-u>tabs<CR>
-nnoremap [TABCMD]r :<C-u>TabRecent<CR>
+" tmux のコマンドと大体同じに
+nnoremap [TABCMD]         <NOP>
+nmap     t                [TABCMD]
+nnoremap [TABCMD]n        :<C-u>tabnext<CR>
+nnoremap [TABCMD]p        :<C-u>tabprevious<CR>
+nnoremap [TABCMD]e        :<C-u>tabedit  <Backspace>
+nnoremap [TABCMD]c        :<C-u>tabedit  <Backspace>
+nnoremap [TABCMD]h        <C-w>h
+nnoremap [TABCMD]j        <C-w>j
+nnoremap [TABCMD]k        <C-w>k
+nnoremap [TABCMD]l        <C-w>l
+nnoremap [TABCMD]s        :<C-u>sp<CR>
+nnoremap [TABCMD]v        :<C-u>vsp<CR>
+nnoremap [TABCMD]<Space>  :<C-u>sp<CR>
+nnoremap [TABCMD]<Return> :<C-u>vsp<CR>
 
 " 右手だけでスクロールできるように
 nnoremap [Prefix]<Space> zz
-nnoremap [Prefix]j <C-f>
-nnoremap [Prefix]k <C-b>
+nnoremap [Prefix]j       <C-f>
+nnoremap [Prefix]k       <C-b>
 
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
 
 " 操作を楽・直感的にする系
-noremap <C-e> $
-noremap <C-a> 0
-inoremap jj <ESC>
-cnoremap jj <ESC>
-nnoremap ; :
-vnoremap ; :
-nnoremap : ;
-vnoremap : ;
+noremap -        $
+noremap <Return> ^
+inoremap jj      <ESC>
+cnoremap jj      <ESC>
+nnoremap ;       :
+vnoremap ;       :
+nnoremap :       ;
+vnoremap :       ;
 
-nnoremap // :<C-u>Migemo<CR>
+nnoremap //      :<C-u>Migemo<CR>
 
-nnoremap * *N
+nnoremap *       *N
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
