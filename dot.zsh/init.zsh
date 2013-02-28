@@ -406,7 +406,7 @@ if [ "$TERM" != "xterm-256color" ]; then
 
     # for Ruby, migemo
     # eval "$(rbenv init -)" is too late
-    which rbenv &> /dev/null && export PATH="/Users/dai/.rbenv/shims:${PATH}"
+    export PATH=$HOME/.rbenv/shims:$PATH
     RUBY_VERSION=1.9
     export RUBYLIB=$HOME/local/lib/ruby/$RUBY_VERSION
     # rubygems
@@ -418,6 +418,9 @@ if [ "$TERM" != "xterm-256color" ]; then
 
     # for Haskell
     export PATH=$HOME/.cabal/bin:$PATH
+
+    # for D
+    export PATH=$HOME/.denv/shims:$HOME/.denv/bin:$PATH
 
     [[ ! -d /tmp/trash ]] && mkdir /tmp/trash
     [[ ! -d /tmp/undo ]] && mkdir /tmp/undo
