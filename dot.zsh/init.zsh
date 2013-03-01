@@ -48,6 +48,7 @@ if [ "$TERM" != "xterm-256color" ]; then
 
     # for Haskell
     export PATH=$HOME/.cabal/bin:$PATH
+    export GHC_VERSION=`ghc --version 2> /dev/null | awk '{ print $8 }'`
 
     # for D
     export PATH=$HOME/.denv/shims:$HOME/.denv/bin:$PATH
@@ -65,7 +66,6 @@ alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
 alias here="open ."
 alias crontab='crontab -i'
 alias ack='ack -i'
-alias c='cabal-dev'
 alias vi='vim -u NONE --noplugin'
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
@@ -177,6 +177,16 @@ function cabal-dev-install-executable() {
     cabal-dev install $1
     [[ ! -d $executable_path ]] && mkdir -p $executable_path
     [[ -d $install_path/cabal-dev/bin ]] && ln -sf $install_path/cabal-dev/bin/* $executable_path
+}
+function c() {
+    local package_path=cabal-dev/packages-${GHC_VERSION}.conf:
+    local sub=$1
+    if [ "$sub" = "run" ]; then
+        shift
+        GHC_PACKAGE_PATH=$package_path runghc $*
+    else
+        GHC_PACKAGE_PATH=$package_path cabal-dev $*
+    fi
 }
 # セパレータ
 # http://qiita.com/items/674b8582772747ede9c3
