@@ -185,7 +185,7 @@ function c() {
         shift
         GHC_PACKAGE_PATH=$package_path runghc $*
     else
-        GHC_PACKAGE_PATH=$package_path cabal-dev $*
+        cabal-dev $*
     fi
 }
 # セパレータ
