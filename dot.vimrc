@@ -323,6 +323,13 @@ vnoremap ;       :
 nnoremap :       ;
 vnoremap :       ;
 
+nnoremap w       W
+nnoremap b       B
+nnoremap e       E
+vnoremap w       W
+vnoremap b       B
+vnoremap e       E
+
 nnoremap //      :<C-u>Migemo<CR>
 
 nnoremap *       *N
