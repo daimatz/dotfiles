@@ -220,8 +220,9 @@ NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
-NeoBundle 'rhysd/clever-f.vim'
+"NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'thinca/vim-tabrecent'
+NeoBundle 'vim-scripts/Align'
 filetype plugin on
 
 """neocomplcache.
