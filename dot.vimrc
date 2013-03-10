@@ -259,6 +259,7 @@ autocmd BufNewFile,BufRead *.txt set ft=markdown
 
 """haskell
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
 
 """キーバインド
