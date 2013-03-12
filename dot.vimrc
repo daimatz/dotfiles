@@ -220,7 +220,7 @@ NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
-"NeoBundle 'rhysd/clever-f.vim'
+NeoBundle 'mattn/wiseman-f-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
 filetype plugin on
@@ -334,6 +334,9 @@ vnoremap e       E
 nnoremap //      :<C-u>Migemo<CR>
 
 nnoremap *       *N
+
+nmap     f       <ESC>c!
+vmap     f       <ESC>c!
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
