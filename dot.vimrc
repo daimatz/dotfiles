@@ -221,6 +221,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'mattn/wiseman-f-vim'
+NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
 filetype plugin on
@@ -265,6 +266,9 @@ let g:haskell_conceal = 0
 """キーバインド
 nnoremap [Prefix] <NOP>
 nmap <Space> [Prefix]
+
+nnoremap [Haskell] <NOP>
+nmap [Prefix]h [Haskell]
 
 " paste toggle
 set pastetoggle=<S-0>
@@ -333,6 +337,8 @@ vnoremap e       E
 
 nnoremap //      :<C-u>Migemo<CR>
 
+nnoremap [Prefix]n :<C-u>noh<Return>
+
 nnoremap *       *N
 
 nmap     f       <ESC>c!
@@ -357,3 +363,11 @@ cnoremap <C-e> <End>
 cnoremap <C-d> <Delete>
 cnoremap <C-h> <BS>
 cnoremap <C-m> <Return>
+
+" Haskell
+noremap [Haskell]t :<C-u>GhcModType<Return>
+noremap [Haskell]n :<C-u>GhcModTypeClear<Return>
+noremap [Haskell]i :<C-u>GhcModTypeInsert<Return>
+noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<Return>
+noremap [Haskell]e :<C-u>GhcModExpand<Return>
+noremap [Haskell]h :<C-u>GhcModInfo<Return>
