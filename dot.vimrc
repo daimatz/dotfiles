@@ -232,7 +232,7 @@ let g:neocomplcache_enable_ignore_case = 1
 "TAB, S-TAB で候補の選択
 inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><Return> pumvisible() ? neocomplcache#close_popup() : "\<Return>"
+inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
 augroup vimrcEx
   autocmd!
@@ -296,20 +296,20 @@ set whichwrap=b,s,h,l,<,>,[,]
 
 " タブ
 " tmux のコマンドと大体同じに
-nnoremap [TABCMD]         <NOP>
-nmap     t                [TABCMD]
-nnoremap [TABCMD]n        :<C-u>tabnext<CR>
-nnoremap [TABCMD]p        :<C-u>tabprevious<CR>
-nnoremap [TABCMD]e        :<C-u>tabedit  <Backspace>
-nnoremap [TABCMD]c        :<C-u>tabedit  <Backspace>
-nnoremap [TABCMD]h        <C-w>h
-nnoremap [TABCMD]j        <C-w>j
-nnoremap [TABCMD]k        <C-w>k
-nnoremap [TABCMD]l        <C-w>l
-nnoremap [TABCMD]s        :<C-u>sp<CR>
-nnoremap [TABCMD]v        :<C-u>vsp<CR>
-nnoremap [TABCMD]<Space>  :<C-u>sp<CR>
-nnoremap [TABCMD]<Return> :<C-u>vsp<CR>
+nnoremap [TABCMD]        <NOP>
+nmap     t               [TABCMD]
+nnoremap [TABCMD]n       :<C-u>tabnext<CR>
+nnoremap [TABCMD]p       :<C-u>tabprevious<CR>
+nnoremap [TABCMD]e       :<C-u>tabedit  <BS>
+nnoremap [TABCMD]c       :<C-u>tabedit  <BS>
+nnoremap [TABCMD]h       <C-w>h
+nnoremap [TABCMD]j       <C-w>j
+nnoremap [TABCMD]k       <C-w>k
+nnoremap [TABCMD]l       <C-w>l
+nnoremap [TABCMD]s       :<C-u>sp<CR>
+nnoremap [TABCMD]v       :<C-u>vsp<CR>
+nnoremap [TABCMD]<Space> :<C-u>sp<CR>
+nnoremap [TABCMD]<CR>    :<C-u>vsp<CR>
 
 " 右手だけでスクロールできるように
 nnoremap [Prefix]<Space> zz
@@ -319,27 +319,20 @@ nnoremap [Prefix]k       <C-b>
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
 
 " 操作を楽・直感的にする系
-noremap -        $
-noremap <Return> ^
-inoremap jj      <ESC>
-cnoremap jj      <ESC>
-nnoremap ;       :
-vnoremap ;       :
-nnoremap :       ;
-vnoremap :       ;
+noremap -    $
+noremap <CR> ^
+inoremap jj  <ESC>
+cnoremap jj  <ESC>
+nnoremap ;   :
+vnoremap ;   :
+nnoremap :   ;
+vnoremap :   ;
+nnoremap *   *N
 
-nnoremap w       W
-nnoremap b       B
-nnoremap e       E
-vnoremap w       W
-vnoremap b       B
-vnoremap e       E
+nnoremap //  :<C-u>Migemo<CR>
 
-nnoremap //      :<C-u>Migemo<CR>
-
-nnoremap [Prefix]n :<C-u>noh<Return>
-
-nnoremap *       *N
+nnoremap [Prefix]n :<C-u>noh<CR>
+nnoremap [Prefix]o :<C-u>on<CR>
 
 nmap     f       <ESC>c!
 vmap     f       <ESC>c!
@@ -353,7 +346,8 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 inoremap <C-d> <Delete>
 inoremap <C-h> <BS>
-inoremap <C-m> <Return>
+inoremap <C-m> <CR>
+inoremap <C-o> <CR><Up>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-n> <Down>
@@ -362,12 +356,13 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Delete>
 cnoremap <C-h> <BS>
-cnoremap <C-m> <Return>
+cnoremap <C-m> <CR>
+cnoremap <C-o> <CR><Up>
 
 " Haskell
-noremap [Haskell]t :<C-u>GhcModType<Return>
-noremap [Haskell]n :<C-u>GhcModTypeClear<Return>
-noremap [Haskell]i :<C-u>GhcModTypeInsert<Return>
-noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<Return>
-noremap [Haskell]e :<C-u>GhcModExpand<Return>
-noremap [Haskell]h :<C-u>GhcModInfo<Return>
+noremap [Haskell]t :<C-u>GhcModType<CR>
+noremap [Haskell]n :<C-u>GhcModTypeClear<CR>
+noremap [Haskell]i :<C-u>GhcModTypeInsert<CR>
+noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<CR>
+noremap [Haskell]e :<C-u>GhcModExpand<CR>
+noremap [Haskell]h :<C-u>GhcModInfo<CR>
