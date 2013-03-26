@@ -100,10 +100,6 @@ function! s:replace_comma_dot()
 endfunction
 autocmd BufWritePre *.tex call s:replace_comma_dot()
 
-"Tab 幅
-set expandtab
-set tabstop=4
-
 "検索の時に大文字小文字を区別しない
 "ただし大文字小文字の両方が含まれている場合は大文字小文字を区別する
 set ignorecase
@@ -125,7 +121,10 @@ set shellslash
 "自動的にインデントする
 set autoindent
 set smartindent
-set shiftwidth=4
+set shiftwidth=2
+"Tab 幅
+set expandtab
+set tabstop=2
 "タイトルを非表示 (Thanks for flying Vim)
 set notitle
 "コマンドラインの高さ (gvimはgvimrcで指定)
@@ -366,3 +365,5 @@ noremap [Haskell]i :<C-u>GhcModTypeInsert<CR>
 noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<CR>
 noremap [Haskell]e :<C-u>GhcModExpand<CR>
 noremap [Haskell]h :<C-u>GhcModInfo<CR>
+au FileType haskell set shiftwidth=4
+au FileType haskell set tabstop=4
