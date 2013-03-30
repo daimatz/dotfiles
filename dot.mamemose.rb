@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
+HOST = "mamemose"
+
 DOCUMENT_ROOT = "~/memo"
+
+PORT = 20000
+WS_PORT = 20001
 
 MARKDOWN_PATTERN = /\.(md|markdown|txt)$/
 
