@@ -9,8 +9,10 @@ INDEX_PATTERN = /^README\.(md|markdown|txt)$/
 
 RECENT_PATTERN = /\.(md|markdown|txt|key|tex|pdf)$/
 
+host = "http://mamemose:20000"
+
 CUSTOM_HEADER = <<HEADER
-<script type="text/javascript" src="/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="#{host}/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {
@@ -24,7 +26,6 @@ MathJax.Hub.Config({
 </script>
 HEADER
 
-host = "http://mamemose:20000"
 CUSTOM_FOOTER = <<FOOTER
 <link href="#{host}/syntaxhighlighter/styles/shCoreGitHub.css" rel="stylesheet" type="text/css" />
 <script src="#{host}/syntaxhighlighter/scripts/shCore.js" type="text/javascript"></script>
