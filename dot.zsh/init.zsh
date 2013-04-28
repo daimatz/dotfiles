@@ -199,7 +199,7 @@ function separate(){
 }
 
 # always home directory
-if [ `pwd` = "/" ]; then
+if [ "`pwd`" = "/" ]; then
     builtin cd $HOME
 fi
 
