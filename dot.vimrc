@@ -365,5 +365,6 @@ noremap [Haskell]i :<C-u>GhcModTypeInsert<CR>
 noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<CR>
 noremap [Haskell]e :<C-u>GhcModExpand<CR>
 noremap [Haskell]h :<C-u>GhcModInfo<CR>
+noremap [Haskell]s :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
