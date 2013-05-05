@@ -184,6 +184,9 @@ function c() {
     if [ "$sub" = "run" ]; then
         shift
         GHC_PACKAGE_PATH=$package_path runghc $*
+    elif [ "$sub" = "compile" ]; then
+        shift
+        GHC_PACKAGE_PATH=$package_path ghc $*
     else
         cabal-dev $*
     fi
