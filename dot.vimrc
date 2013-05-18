@@ -223,6 +223,7 @@ NeoBundle 'mattn/wiseman-f-vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
+NeoBundle 'gtags.vim'
 filetype plugin on
 
 """neocomplcache.
@@ -274,6 +275,11 @@ set pastetoggle=<S-0>
 noremap [Prefix]p <S-0>
 
 nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
+
+" gtags
+noremap [Prefix]gg :<C-u>Gtags<CR>
+noremap [Prefix]gf :<C-u>Gtags -f %<CR>
+noremap [Prefix]gc :<C-u>GtagsCursor<CR>
 
 " x, X キーでヤンクしない
 nnoremap x "_x
@@ -330,11 +336,10 @@ nnoremap *   *N
 
 nnoremap //  :<C-u>Migemo<CR>
 
-nnoremap [Prefix]n :<C-u>noh<CR>
-nnoremap [Prefix]o :<C-u>on<CR>
+nnoremap [Prefix]n :<C-u>cn<CR>
+nnoremap [Prefix]p :<C-u>cp<CR>
 
-nmap     f       <ESC>c!
-vmap     f       <ESC>c!
+nnoremap [Prefix]o :<C-u>on<CR>
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
