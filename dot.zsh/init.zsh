@@ -296,14 +296,26 @@ zstyle ':vcs_info:*' actionformats '(%s)[%b]' '%m' '<!%a>'
 zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
 zstyle ':vcs_info:bzr:*' use-simple true
 
-if is-at-least 4.3.10; then
-    # git 用のフォーマット
+function vcs_info_check_for_changes() {
     # git のときはステージしているかどうかを表示
     zstyle ':vcs_info:git:*' formats '(%s)[%b]' '%c%u%m'
     zstyle ':vcs_info:git:*' actionformats '(%s)[%b]' '%c%u%m' '<!%a>'
     zstyle ':vcs_info:git:*' check-for-changes true
     zstyle ':vcs_info:git:*' stagedstr "%F{magenta}[+]%f"    # %c で表示する文字列
     zstyle ':vcs_info:git:*' unstagedstr "%F{magenta}[-]%f"  # %u で表示する文字列
+}
+
+function vcs_info_no_check_for_changes() {
+    # リポジトリが巨大すぎて表示が遅いとき
+    zstyle ':vcs_info:git:*' formats '(%s)[%b]'
+    zstyle ':vcs_info:git:*' actionformats '(%s)[%b]' '%m' '<!%a>'
+    zstyle ':vcs_info:git:*' check-for-changes false
+    zstyle ':vcs_info:git:*' stagedstr ''
+    zstyle ':vcs_info:git:*' unstagedstr ''
+}
+
+if is-at-least 4.3.10; then
+    vcs_info_check_for_changes
 fi
 
 # hooks 設定
