@@ -25,6 +25,10 @@
     ru = remote update --prune
     now = !"f() { git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     addw = !"git diff -w --no-color | git apply --cached"
+    # generates .gitignore by http://gitignore.io/
+    ignore = !"f() { local s=$1; shift; \
+      while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
+      curl "http://gitignore.io/api/$s"; }; f"
 [core]
     excludesfile = ~/.gitignore
     editor = vim
