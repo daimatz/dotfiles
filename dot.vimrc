@@ -338,6 +338,7 @@ nnoremap //  :<C-u>Migemo<CR>
 
 nnoremap [Prefix]n :<C-u>cn<CR>
 nnoremap [Prefix]p :<C-u>cp<CR>
+nnoremap [Prefix]c :<C-u>cc<CR>
 
 nnoremap [Prefix]o :<C-u>on<CR>
 
