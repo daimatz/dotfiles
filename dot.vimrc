@@ -62,8 +62,11 @@ set shortmess+=I
 "ペースト "neocomplcache が動かないらしい
 "set paste
 
-"カーソル行ハイライト "重い
-"set cursorline
+"カーソル行ハイライト
+set cursorline
+
+" カーソル列ハイライト
+set cursorcolumn
 
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
