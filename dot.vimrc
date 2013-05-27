@@ -206,14 +206,29 @@ highlight statuslineNC term=NONE cterm=NONE ctermfg=black ctermbg=240
 " タブとスペース
 set list
 set listchars=tab:^\ ,trail:\ ,
-"カーソル行ハイライト
-set cursorline
-highlight CursorLine term=NONE cterm=NONE ctermbg=234
-" カーソル列ハイライト
-set cursorcolumn
-highlight CursorColumn term=NONE cterm=NONE ctermbg=235
 " ビジュアルモードハイライト
 highlight Visual term=NONE cterm=NONE ctermbg=18
+
+highlight CursorLine term=NONE cterm=NONE ctermbg=22
+highlight CursorColumn term=NONE cterm=NONE ctermbg=22
+augroup HighlightCursorLineColumn
+  function! NoHighlightCursorLineColumn()
+    if s:highlight > 0
+      setlocal nocursorline
+      setlocal nocursorcolumn
+      let s:highlight = 0
+    endif
+  endfunction
+  function! HighlightCursorLineColumn()
+    autocmd!
+    "カーソル行列ハイライト
+    setlocal cursorline
+    setlocal cursorcolumn
+    let s:highlight = 1
+    " カーソルを動かしたらハイライトやめる
+    autocmd CursorMoved,CursorMovedI,WinLeave * call NoHighlightCursorLineColumn()
+  endfunction
+augroup END
 
 """Bundle
 NeoBundle 'Shougo/neocomplcache'
@@ -327,6 +342,8 @@ nnoremap [Prefix]j       <C-f>
 nnoremap [Prefix]k       <C-b>
 
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
+
+nnoremap [Prefix]<CR> :<C-u>call HighlightCursorLineColumn()<CR>
 
 " 操作を楽・直感的にする系
 noremap -    $
