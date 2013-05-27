@@ -209,11 +209,14 @@ set listchars=tab:^\ ,trail:\ ,
 " ビジュアルモードハイライト
 highlight Visual term=NONE cterm=NONE ctermbg=18
 
-highlight CursorLine term=NONE cterm=NONE ctermbg=22
-highlight CursorColumn term=NONE cterm=NONE ctermbg=22
+" カーソル行列を自動でハイライト
+highlight CursorLine term=NONE cterm=NONE ctermbg=235
+highlight CursorColumn term=NONE cterm=NONE ctermbg=236
 augroup HighlightCursorLineColumn
   function! NoHighlightCursorLineColumn()
     if s:highlight > 0
+      let s:updatetime = &updatetime
+      set updatetime=500
       setlocal nocursorline
       setlocal nocursorcolumn
       let s:highlight = 0
@@ -224,10 +227,17 @@ augroup HighlightCursorLineColumn
     "カーソル行列ハイライト
     setlocal cursorline
     setlocal cursorcolumn
+    if exists('s:updatetime')
+      let &updatetime = s:updatetime
+      unlet s:updatetime
+    endif
     let s:highlight = 1
     " カーソルを動かしたらハイライトやめる
     autocmd CursorMoved,CursorMovedI,WinLeave * call NoHighlightCursorLineColumn()
   endfunction
+  call HighlightCursorLineColumn()
+  autocmd CursorHold * call HighlightCursorLineColumn()
+  autocmd CursorHoldI * call HighlightCursorLineColumn()
 augroup END
 
 """Bundle
@@ -342,8 +352,6 @@ nnoremap [Prefix]j       <C-f>
 nnoremap [Prefix]k       <C-b>
 
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
-
-nnoremap [Prefix]<CR> :<C-u>call HighlightCursorLineColumn()<CR>
 
 " 操作を楽・直感的にする系
 noremap -    $
