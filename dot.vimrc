@@ -62,12 +62,6 @@ set shortmess+=I
 "ペースト "neocomplcache が動かないらしい
 "set paste
 
-"カーソル行ハイライト
-set cursorline
-
-" カーソル列ハイライト
-set cursorcolumn
-
 "強制全保存終了を無効化
 nnoremap ZZ <Nop>
 
@@ -212,6 +206,14 @@ highlight statuslineNC term=NONE cterm=NONE ctermfg=black ctermbg=240
 " タブとスペース
 set list
 set listchars=tab:^\ ,trail:\ ,
+"カーソル行ハイライト
+set cursorline
+highlight CursorLine term=NONE cterm=NONE ctermbg=234
+" カーソル列ハイライト
+set cursorcolumn
+highlight CursorColumn term=NONE cterm=NONE ctermbg=235
+" ビジュアルモードハイライト
+highlight Visual term=NONE cterm=NONE ctermbg=18
 
 """Bundle
 NeoBundle 'Shougo/neocomplcache'
