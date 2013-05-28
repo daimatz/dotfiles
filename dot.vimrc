@@ -223,7 +223,6 @@ augroup HighlightCursorLineColumn
     endif
   endfunction
   function! HighlightCursorLineColumn()
-    autocmd!
     "カーソル行列ハイライト
     setlocal cursorline
     setlocal cursorcolumn
@@ -235,10 +234,13 @@ augroup HighlightCursorLineColumn
     " カーソルを動かしたらハイライトやめる
     autocmd CursorMoved,CursorMovedI,WinLeave * call NoHighlightCursorLineColumn()
   endfunction
-  call HighlightCursorLineColumn()
   autocmd CursorHold * call HighlightCursorLineColumn()
   autocmd CursorHoldI * call HighlightCursorLineColumn()
 augroup END
+" TODO: 起動時にカーソルハイライトしたい
+if has('vim_starting')
+  call HighlightCursorLineColumn()
+endif
 
 """Bundle
 NeoBundle 'Shougo/neocomplcache'
