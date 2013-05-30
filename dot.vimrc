@@ -299,20 +299,6 @@ let g:haskell_conceal = 0
 nnoremap [Prefix] <NOP>
 nmap <Space> [Prefix]
 
-nnoremap [Haskell] <NOP>
-nmap [Prefix]h [Haskell]
-
-" paste toggle
-set pastetoggle=<S-0>
-noremap [Prefix]p <S-0>
-
-nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
-
-" gtags
-noremap [Prefix]gg :<C-u>Gtags<CR>
-noremap [Prefix]gf :<C-u>Gtags -f %<CR>
-noremap [Prefix]gc :<C-u>GtagsCursor<CR>
-
 " x, X キーでヤンクしない
 nnoremap x "_x
 vnoremap x "_x
@@ -352,11 +338,14 @@ nnoremap [TABCMD]<CR>    :<C-u>vsp<CR>
 nnoremap [Prefix]<Space> zz
 nnoremap [Prefix]j       <C-f>
 nnoremap [Prefix]k       <C-b>
+nnoremap ,               0
+nnoremap .               $
+vnoremap ,               0
+vnoremap .               $
 
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
 
 " 操作を楽・直感的にする系
-noremap -    $
 noremap <CR> ^
 inoremap jj  <ESC>
 cnoremap jj  <ESC>
@@ -397,6 +386,8 @@ cnoremap <C-m> <CR>
 cnoremap <C-o> <CR><Up>
 
 " Haskell
+nnoremap [Haskell] <NOP>
+nmap [Prefix]h [Haskell]
 noremap [Haskell]t :<C-u>GhcModType<CR>
 noremap [Haskell]n :<C-u>GhcModTypeClear<CR>
 noremap [Haskell]i :<C-u>GhcModTypeInsert<CR>
@@ -406,3 +397,11 @@ noremap [Haskell]h :<C-u>GhcModInfo<CR>
 noremap [Haskell]s :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
+
+" QuickRun
+nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
+
+" gtags
+noremap [Prefix]gg :<C-u>Gtags<CR>
+noremap [Prefix]gf :<C-u>Gtags -f %<CR>
+noremap [Prefix]gc :<C-u>GtagsCursor<CR>
