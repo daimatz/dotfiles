@@ -67,6 +67,8 @@ alias here="open ."
 alias crontab='crontab -i'
 alias ack='ack -i'
 alias vi='vim -u NONE --noplugin'
+alias psg='ps aux | grep'
+alias e=vim
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
 alias simplehttpserver='python -m SimpleHTTPServer'
@@ -89,6 +91,10 @@ function run_unless() {
         run=$2
     fi
     [[ -z "`ps aux | grep $1 | grep $USER | grep -v grep`" ]] && $run &> /dev/null &
+}
+# 名前で検索
+function fd() {
+    find . -name "*$1*"
 }
 # cd したあとに ls
 function cd() {
