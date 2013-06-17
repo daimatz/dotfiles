@@ -252,7 +252,6 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'mattn/wiseman-f-vim'
-NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'gtags.vim'
@@ -388,12 +387,13 @@ cnoremap <C-o> <CR><Up>
 " Haskell
 nnoremap [Haskell] <NOP>
 nmap [Prefix]h [Haskell]
-noremap [Haskell]t :<C-u>GhcModType<CR>
-noremap [Haskell]n :<C-u>GhcModTypeClear<CR>
-noremap [Haskell]i :<C-u>GhcModTypeInsert<CR>
+noremap [Haskell]tt :<C-u>GhcModType<CR>
+noremap [Haskell]tc :<C-u>GhcModTypeClear<CR>
+noremap [Haskell]ti :<C-u>GhcModTypeInsert<CR>
 noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<CR>
 noremap [Haskell]e :<C-u>GhcModExpand<CR>
-noremap [Haskell]h :<C-u>GhcModInfo<CR>
+noremap [Haskell]ii :<C-u>GhcModInfo<CR>
+noremap [Haskell]ip :<C-u>GhcModInfoPreview<CR>
 noremap [Haskell]s :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
