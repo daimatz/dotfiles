@@ -161,6 +161,20 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.bundle'))
 endif
 
+"""Bundle
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'dag/vim2hs'
+NeoBundle 'mattn/wiseman-f-vim'
+NeoBundle 'thinca/vim-tabrecent'
+NeoBundle 'vim-scripts/Align'
+NeoBundle 'gtags.vim'
+
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
 "NeoBundle 'croaker/mustang-vim'
@@ -176,6 +190,9 @@ NeoBundle 'nanotech/jellybeans.vim'
 "NeoBundle 'wgibbs/vim-irblack'
 "NeoBundle 'Lokaltog/vim-distinguished'
 "NeoBundle 'matthewtodd/vim-twilight.git'
+
+filetype plugin on
+
 "色設定
 function! BadSpace()
   highlight BadSpace ctermbg=red
@@ -193,7 +210,7 @@ endif
 "81,82桁目をハイライト
 set textwidth=80
 if exists('&colorcolumn')
-  set colorcolumn=+1,+2
+  set colorcolumn=81,82 " vim2hs で textwidth=75 されている…
   highlight ColorColumn ctermbg=52 guibg=darkred
 endif
 " ステータスライン
@@ -237,21 +254,6 @@ augroup END
 if has('vim_starting')
   call HighlightCursorLineColumn()
 endif
-
-"""Bundle
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'mattn/wiseman-f-vim'
-NeoBundle 'thinca/vim-tabrecent'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'gtags.vim'
-filetype plugin on
 
 """neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
