@@ -351,7 +351,7 @@ nnoremap ;   :
 vnoremap ;   :
 nnoremap :   ;
 vnoremap :   ;
-nnoremap *   *N
+nnoremap #   *N
 
 nnoremap //  :<C-u>Migemo<CR>
 
