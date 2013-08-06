@@ -28,7 +28,7 @@
     # generates .gitignore by http://gitignore.io/
     ignore = !"f() { local s=$1; shift; \
       while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
-      curl "http://gitignore.io/api/$s"; }; f"
+      curl \"http://gitignore.io/api/$s\"; }; f"
 [core]
     excludesfile = ~/.gitignore
     editor = vim
