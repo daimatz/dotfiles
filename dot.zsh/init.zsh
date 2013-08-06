@@ -2,6 +2,9 @@ function err() {
     echo $* > /dev/stderr
 }
 
+# why?
+export TERM=xterm-256color
+
 # alias
 alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
 alias here="open ."
