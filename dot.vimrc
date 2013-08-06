@@ -173,7 +173,7 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'mattn/wiseman-f-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
-NeoBundle 'gtags.vim'
+NeoBundle 'vim-scripts/gtags.vim'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
