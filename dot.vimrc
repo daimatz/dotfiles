@@ -331,6 +331,8 @@ nnoremap [TABCMD]v       :<C-u>vsp<CR>
 nnoremap [TABCMD]<Space> :<C-u>sp<CR>
 nnoremap [TABCMD]m       :<C-u>vsp<CR>
 nnoremap [TABCMD]<CR>    :<C-u>vsp<CR>
+nnoremap [TABCMD]t       v
+vnoremap q               <ESC>
 
 " 右手だけでスクロールできるように
 nnoremap [Prefix]<Space> zz
