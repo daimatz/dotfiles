@@ -30,7 +30,7 @@ export PATH=$PATH:/usr/local/heroku/bin
 
 # for Ruby, migemo
 # eval "$(rbenv init -)" is too late
-export PATH=$HOME/.rbenv/shims:$PATH
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
 # rubygems
 RUBY_VERSION=$(ruby -e 'print RUBY_VERSION.gsub(/(\d)\.(\d)\.(\d)/, "\\1.\\2")')
 export GEM_HOME=$HOME/.gems/$RUBY_VERSION
