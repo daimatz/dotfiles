@@ -389,6 +389,14 @@ cnoremap <C-o> <CR><Up>
 inoremap <C-Space>   <C-n>
 inoremap <C-S-Space> <C-p>
 
+" Utility Keybinds
+nnoremap [Util]    <NOP>
+nmap     [Prefix]u [Util]
+" QuickRun
+nnoremap [Util]r   :<C-u>QuickRun<CR><C-w>j
+" Date
+nnoremap [Util]d   <ESC>i<C-R>=strftime("## %Y/%m/%d (%a) %H:%M")<CR><CR><CR>
+
 " Haskell
 nnoremap [Haskell] <NOP>
 nmap [Prefix]h [Haskell]
@@ -402,9 +410,6 @@ noremap [Haskell]ip :<C-u>GhcModInfoPreview<CR>
 noremap [Haskell]s :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
-
-" QuickRun
-nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
 
 " gtags
 noremap [Prefix]gg :<C-u>Gtags<CR>
