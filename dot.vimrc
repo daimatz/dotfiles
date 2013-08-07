@@ -385,6 +385,10 @@ cnoremap <C-h> <BS>
 cnoremap <C-m> <CR>
 cnoremap <C-o> <CR><Up>
 
+" insert mode で補完
+inoremap <C-Space>   <C-n>
+inoremap <C-S-Space> <C-p>
+
 " Haskell
 nnoremap [Haskell] <NOP>
 nmap [Prefix]h [Haskell]
