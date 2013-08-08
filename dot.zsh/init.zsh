@@ -17,6 +17,9 @@ alias json='python -mjson.tool'
 alias xml='xmllint --format -'
 alias simplehttpserver='python -m SimpleHTTPServer'
 
+# ruby
+alias b='bundle exec'
+
 # hogehoge G で hogehoge | grep になるとか
 alias -g G=' | grep'
 alias -g X=' | xargs'
