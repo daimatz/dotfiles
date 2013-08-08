@@ -395,7 +395,7 @@ nmap     [Prefix]u [Util]
 " QuickRun
 nnoremap [Util]r   :<C-u>QuickRun<CR><C-w>j
 " Date
-nnoremap [Util]d   <ESC>i<C-R>=strftime("## %Y/%m/%d (%a) %H:%M")<CR><CR><CR>
+nnoremap [Util]d   <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><CR><ESC>
 
 " Haskell
 nnoremap [Haskell] <NOP>
