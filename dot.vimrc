@@ -293,8 +293,15 @@ let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
 
 """キーバインド
+nnoremap <CR> <ESC>
 nnoremap [Prefix] <NOP>
-nmap <Space> [Prefix]
+nnoremap [Prefix]<CR> <ESC>
+nmap     <Space> [Prefix]
+nnoremap [Prefix]<CR> <ESC>
+vnoremap [Prefix] <NOP>
+vmap     <Space> [Prefix]
+vnoremap [Prefix]<CR> <ESC>
+vnoremap <CR> <ESC>
 
 " x, X キーでヤンクしない
 nnoremap x "_x
@@ -335,7 +342,7 @@ nnoremap [TABCMD]t       v
 vnoremap q               <ESC>
 
 " 右手だけでスクロールできるように
-nnoremap [Prefix]<Space> zz
+nnoremap [Prefix]l       zz
 nnoremap [Prefix]j       <C-f>
 nnoremap [Prefix]k       <C-b>
 nnoremap ,               0
@@ -346,7 +353,10 @@ vnoremap .               $
 nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
 
 " 操作を楽・直感的にする系
-noremap <CR> ^
+nnoremap <BS> ^
+vnoremap <BS> ^
+nnoremap <C-h> ^
+vnoremap <C-h> ^
 inoremap jj  <ESC>
 cnoremap jj  <ESC>
 nnoremap ;   :
@@ -356,12 +366,6 @@ vnoremap :   ;
 nnoremap #   *N
 
 nnoremap //  :<C-u>Migemo<CR>
-
-nnoremap [Prefix]n :<C-u>cn<CR>
-nnoremap [Prefix]p :<C-u>cp<CR>
-nnoremap [Prefix]c :<C-u>cc<CR>
-
-nnoremap [Prefix]o :<C-u>on<CR>
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
@@ -390,28 +394,41 @@ inoremap <C-Space>   <C-n>
 inoremap <C-S-Space> <C-p>
 
 " Utility Keybinds
-nnoremap [Util]    <NOP>
-nmap     [Prefix]u [Util]
+nnoremap [Util]          <NOP>
+vmap     [Prefix]<Space> <ESC>[Util]
+nnoremap [Prefix]<CR>    <ESC>
+nmap     [Prefix]<Space> [Util]
+nnoremap [Util]n         :<C-u>cn<CR>
+nnoremap [Util]p         :<C-u>cp<CR>
+nnoremap [Util]c         :<C-u>cc<CR>
+nnoremap [Util]o         :<C-u>on<CR>
 " QuickRun
-nnoremap [Util]r   :<C-u>QuickRun<CR><C-w>j
-" Date
-nnoremap [Util]d   <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><CR><ESC>
+nnoremap [Util]r         :<C-u>QuickRun<CR><C-w>j
+" Insert Date
+nnoremap [Util]d         <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><CR><ESC>
 
 " Haskell
-nnoremap [Haskell] <NOP>
-nmap [Prefix]h [Haskell]
-noremap [Haskell]tt :<C-u>GhcModType<CR>
-noremap [Haskell]tc :<C-u>GhcModTypeClear<CR>
-noremap [Haskell]ti :<C-u>GhcModTypeInsert<CR>
-noremap [Haskell]c :<C-u>GhcModCheckAndLintAsync<CR>
-noremap [Haskell]e :<C-u>GhcModExpand<CR>
-noremap [Haskell]ii :<C-u>GhcModInfo<CR>
-noremap [Haskell]ip :<C-u>GhcModInfoPreview<CR>
-noremap [Haskell]s :<C-u>%!stylish-haskell<CR>
+nnoremap [Haskell]      <NOP>
+nmap     [Prefix]h      [Haskell]
+nnoremap [Haskell]<CR>  <ESC>
+nnoremap [Haskell]tt    :<C-u>GhcModType<CR>
+nnoremap [Haskell]tc    :<C-u>GhcModTypeClear<CR>
+nnoremap [Haskell]ti    :<C-u>GhcModTypeInsert<CR>
+nnoremap [Haskell]tt    :<C-u>GhcModType<CR>
+nnoremap [Haskell]t<CR> <ESC>
+nnoremap [Haskell]c     :<C-u>GhcModCheckAndLintAsync<CR>
+nnoremap [Haskell]e     :<C-u>GhcModExpand<CR>
+nnoremap [Haskell]ii    :<C-u>GhcModInfo<CR>
+nnoremap [Haskell]ip    :<C-u>GhcModInfoPreview<CR>
+nnoremap [Haskell]i<CR> <ESC>
+nnoremap [Haskell]s     :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
 
 " gtags
-noremap [Prefix]gg :<C-u>Gtags<CR>
-noremap [Prefix]gf :<C-u>Gtags -f %<CR>
-noremap [Prefix]gc :<C-u>GtagsCursor<CR>
+noremap [Gtags]     <NOP>
+nmap    [Prefix]g   [Gtags]
+noremap [Gtags]<CR> <ESC>
+noremap [Gtags]g    :<C-u>Gtags<CR>
+noremap [Gtags]f    :<C-u>Gtags -f %<CR>
+noremap [Gtags]c    :<C-u>GtagsCursor<CR>
