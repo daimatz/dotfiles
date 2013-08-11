@@ -174,6 +174,7 @@ NeoBundle 'mattn/wiseman-f-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/gtags.vim'
+NeoBundle 'jimenezrick/vimerl'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -424,6 +425,20 @@ nnoremap [Haskell]i<CR> <ESC>
 nnoremap [Haskell]s     :<C-u>%!stylish-haskell<CR>
 au FileType haskell set shiftwidth=4
 au FileType haskell set tabstop=4
+
+" Erlang
+nnoremap [Erlang] <NOP>
+nmap [Prefix]e [Erlang]
+noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w<CR>
+" function! s:ErlangReloadErrors()
+"   ErlangDisableShowErrors
+"   ErlangEnableShowErrors
+"   w
+" endfunction
+" autocmd BufWritePre *.erl call s:ErlangReloadErrors()
+
+" QuickRun
+nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
 
 " gtags
 noremap [Gtags]     <NOP>
