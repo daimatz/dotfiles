@@ -264,6 +264,17 @@ inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
+"""QuickRun
+" C++11
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -lm'
+let g:quickrun_config = {}
+let g:quickrun_config['cpp/g++11'] = {
+  \ 'cmdopt': '-std=c++11 -lm',
+  \ 'type': 'cpp/g++'
+    \ }
+let g:quickrun_config['cpp'] = {'type': 'cpp/g++11'}
+
 augroup vimrcEx
   autocmd!
   """ファイルを開いたら前回のカーソル位置へ移動
