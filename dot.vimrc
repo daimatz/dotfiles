@@ -437,9 +437,6 @@ noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w
 " endfunction
 " autocmd BufWritePre *.erl call s:ErlangReloadErrors()
 
-" QuickRun
-nnoremap [Prefix]r :<C-u>QuickRun<CR><C-w>j
-
 " gtags
 noremap [Gtags]     <NOP>
 nmap    [Prefix]g   [Gtags]
