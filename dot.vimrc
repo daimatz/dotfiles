@@ -402,8 +402,7 @@ cnoremap <C-m> <CR>
 cnoremap <C-o> <CR><Up>
 
 " insert mode で補完
-inoremap <C-Space>   <C-n>
-inoremap <C-S-Space> <C-p>
+inoremap <C-@> <C-n>
 
 " Utility Keybinds
 nnoremap [Util]          <NOP>
