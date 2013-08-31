@@ -31,7 +31,7 @@ set nrformats-=octal
 set timeoutlen=3500
 
 "クリップボードを共有
-set clipboard+=unnamed
+"set clipboard+=unnamed
 
 "編集結果非保存のバッファから、新しいバッファを開くときに警告を出さない
 set hidden

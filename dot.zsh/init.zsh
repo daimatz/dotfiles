@@ -11,7 +11,7 @@ alias here="open ."
 alias crontab='crontab -i'
 alias ack='ack -i'
 alias vi='vim -u NONE --noplugin'
-alias psg='ps aux | grep'
+alias psg='ps aux | grep -v grep | grep'
 alias e=vim
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
@@ -52,18 +52,6 @@ function cd() {
         builtin cd $other && ls
     else
         builtin cd $@ && ls
-    fi
-}
-# OSX 用 tmux (reattach-to-user-namespace) をかませるか否か
-function tmux() {
-    if [[ "$1" == "a" ]]; then
-        command tmux $*
-    elif [[ ( $OSTYPE == darwin* ) && ( -x $(which reattach-to-user-namespace 2>/dev/null 2>&1) ) ]]; then
-        tweaked_config=$(cat $HOME/.tmux.conf <(echo 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'))
-
-        command tmux $* -f <(echo "$tweaked_config")
-    else
-        command tmux $*
     fi
 }
 # 競技プログラミング用
