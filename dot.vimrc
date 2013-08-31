@@ -415,10 +415,6 @@ nnoremap [Util]          <NOP>
 vmap     [Prefix]<Space> <ESC>[Util]
 nnoremap [Prefix]<CR>    <ESC>
 nmap     [Prefix]<Space> [Util]
-nnoremap [Util]n         :<C-u>cn<CR>
-nnoremap [Util]p         :<C-u>cp<CR>
-nnoremap [Util]c         :<C-u>cc<CR>
-nnoremap [Util]o         :<C-u>on<CR>
 " QuickRun
 nnoremap [Util]r         :<C-u>QuickRun -outputter quickfix -hook/time/enable 1<CR>:cclose<CR>:Unite -direction=botright quickfix<CR>
 " Insert Date
