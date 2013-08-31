@@ -72,6 +72,9 @@ set iskeyword+=45
 set splitbelow
 set splitright
 
+"ack を使う
+set grepprg=ack\ --nocolor
+
 "保存時に行末の空白を除去する
 function! s:trim()
   let s:cursor = getpos(".")
@@ -175,6 +178,9 @@ NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'jimenezrick/vimerl'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'osyo-manga/unite-quickfix'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -414,9 +420,15 @@ nnoremap [Util]p         :<C-u>cp<CR>
 nnoremap [Util]c         :<C-u>cc<CR>
 nnoremap [Util]o         :<C-u>on<CR>
 " QuickRun
-nnoremap [Util]r         :<C-u>QuickRun<CR><C-w>j
+nnoremap [Util]r         :<C-u>QuickRun -outputter quickfix -hook/time/enable 1<CR>:cclose<CR>:Unite -direction=botright quickfix<CR>
 " Insert Date
 nnoremap [Util]d         <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><CR><ESC>
+" Unite
+nnoremap [Util]o         :<C-u>Unite -direction=botright outline<CR>
+nnoremap [Util]q         :<C-u>Unite -direction=botright quickfix<CR>
+nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
+nnoremap [Util]f         :<C-u>Unite -direction=botright file<CR>
+nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
 
 " Haskell
 nnoremap [Haskell]      <NOP>
