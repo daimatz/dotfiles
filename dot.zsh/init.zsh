@@ -20,6 +20,13 @@ alias simplehttpserver='python -m SimpleHTTPServer'
 # ruby
 alias b='bundle exec'
 
+# clipboard copy command
+if [ $OSTYPE = "linux*" ]; then
+    alias clip='xsel -b --display :0.0'
+elif [ $OSTYPE = "darwin*" ]; then
+    alias clip='reattach-to-user-namespace pbcopy'
+fi
+
 # hogehoge G で hogehoge | grep になるとか
 alias -g G=' | grep'
 alias -g X=' | xargs'
