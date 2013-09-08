@@ -32,7 +32,7 @@ export PATH=$PATH:/usr/local/heroku/bin
 # eval "$(rbenv init -)" is too late
 export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
 # rubygems
-RUBY_VERSION=$(ruby -e 'print RUBY_VERSION.gsub(/(\d)\.(\d)\.(\d)/, "\\1.\\2")')
+RUBY_VERSION=$(ruby -e 'print RUBY_VERSION.gsub(/(\d)\.(\d)\.(\d)/, "\\1.\\2")' 2> /dev/null)
 export GEM_HOME=$HOME/.gems/$RUBY_VERSION
 export PATH=$GEM_HOME/bin:$PATH
 
@@ -41,7 +41,7 @@ export PERL5LIB=$HOME/local
 
 # for Haskell
 export PATH=$HOME/.cabal/bin:$PATH
-export GHC_VERSION=`ghc --version 2> /dev/null | awk '{ print $8 }'`
+export GHC_VERSION=$(ghc --version 2> /dev/null | awk '{ print $8 }')
 
 # for D
 export PATH=$HOME/.denv/shims:$HOME/.denv/bin:$PATH
