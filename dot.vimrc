@@ -445,8 +445,8 @@ let g:jedi#rename_command = ""
 let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-au FileType python set shiftwidth=4
-au FileType python set tabstop=4
+au FileType python setlocal shiftwidth=4
+au FileType python setlocal tabstop=4
 
 " Haskell
 nnoremap [Haskell]      <NOP>
@@ -463,8 +463,8 @@ nnoremap [Haskell]ii    :<C-u>GhcModInfo<CR>
 nnoremap [Haskell]ip    :<C-u>GhcModInfoPreview<CR>
 nnoremap [Haskell]i<CR> <ESC>
 nnoremap [Haskell]s     :<C-u>%!stylish-haskell<CR>
-au FileType haskell set shiftwidth=4
-au FileType haskell set tabstop=4
+au FileType haskell setlocal shiftwidth=4
+au FileType haskell setlocal tabstop=4
 
 " Erlang
 nnoremap [Erlang] <NOP>
