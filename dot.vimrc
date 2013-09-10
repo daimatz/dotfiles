@@ -370,8 +370,6 @@ nnoremap .               $
 vnoremap ,               0
 vnoremap .               $
 
-nnoremap [Prefix]s :<C-u>source ~/.vimrc<CR>
-
 " 操作を楽・直感的にする系
 nnoremap <BS> ^
 vnoremap <BS> ^
@@ -383,9 +381,13 @@ nnoremap ;   :
 vnoremap ;   :
 nnoremap :   ;
 vnoremap :   ;
-nnoremap #   *N
+nnoremap #   *Nzz
+nnoremap n   nzz
+nnoremap N   Nzz
 
 nnoremap //  :<C-u>Migemo<CR>
+
+cmap w!! w !sudo tee > /dev/null %
 
 " insert mode で Emacs キーバインド
 inoremap <C-f> <Right>
