@@ -182,6 +182,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'scrooloose/syntastic'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -426,6 +427,13 @@ nnoremap [Util]q         :<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file<CR>
 nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
+
+" Syntastic
+let g:syntastic_mode_map = {
+  \ 'mode': 'active',
+  \ 'active_filetypes': ['php', 'python', 'sh', 'ruby'],
+  \ 'passive_filetypes': ['haskell', 'html', 'cpp', 'c']
+  \}
 
 " Python
 nnoremap [Python]       <NOP>
