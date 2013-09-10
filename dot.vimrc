@@ -181,6 +181,7 @@ NeoBundle 'jimenezrick/vimerl'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
+NeoBundle 'davidhalter/jedi-vim'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -425,6 +426,27 @@ nnoremap [Util]q         :<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file<CR>
 nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
+
+" Python
+nnoremap [Python]       <NOP>
+nmap     [Prefix]p      [Python]
+nnoremap [Python]<CR>   <ESC>
+nnoremap [Python]d      :<C-u>call jedi#goto_definitions()<CR>
+nnoremap [Python]g      :<C-u>call jedi#goto_assignments()<CR>
+nnoremap [Python]r      :<C-u>call jedi#rename()<CR>
+nnoremap [Python]k      :<C-u>call jedi#documentation_command()<CR>
+nnoremap [Python]n      :<C-u>call jedi#usages()<CR>
+let g:jedi#goto_assignments_command = ""
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = ""
+let g:jedi#usages_command = ""
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = ""
+let g:jedi#show_call_signatures = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+au FileType python set shiftwidth=4
+au FileType python set tabstop=4
 
 " Haskell
 nnoremap [Haskell]      <NOP>
