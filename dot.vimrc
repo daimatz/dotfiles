@@ -420,12 +420,12 @@ vmap     [Prefix]<Space> <ESC>[Util]
 nnoremap [Prefix]<CR>    <ESC>
 nmap     [Prefix]<Space> [Util]
 " QuickRun
-nnoremap [Util]r         :<C-u>QuickRun -outputter quickfix -hook/time/enable 1<CR>:cclose<CR>:Unite -direction=botright quickfix<CR>
+nnoremap [Util]r         m`:<C-u>QuickRun -outputter quickfix -hook/time/enable 1<CR>:cclose<CR>:Unite -direction=botright quickfix<CR>
 " Insert Date
 nnoremap [Util]d         <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><CR><ESC>
 " Unite
-nnoremap [Util]o         :<C-u>Unite -direction=botright outline<CR>
-nnoremap [Util]q         :<C-u>Unite -direction=botright quickfix<CR>
+nnoremap [Util]o         m`:<C-u>Unite -direction=botright outline<CR>
+nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file<CR>
 nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
