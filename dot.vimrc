@@ -72,8 +72,8 @@ set iskeyword+=45
 set splitbelow
 set splitright
 
-"ack を使う
-set grepprg=ack\ --nocolor
+" ag (the_silver_searcher) を使う
+set grepprg=ag\ --nocolor
 
 "保存時に行末の空白を除去する
 function! s:trim()
