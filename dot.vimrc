@@ -306,6 +306,8 @@ augroup END
 
 """Markdown
 autocmd BufNewFile,BufRead *.txt set ft=markdown
+au FileType markdown setlocal shiftwidth=4
+au FileType markdown setlocal tabstop=4
 
 """haskell
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
