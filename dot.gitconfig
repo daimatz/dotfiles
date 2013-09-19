@@ -32,6 +32,7 @@
 [core]
     excludesfile = ~/.gitignore
     editor = vim
+    quotepath = false
 [tig]
     line-graphics = ascii
     show-line-numbers = yes
