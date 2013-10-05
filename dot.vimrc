@@ -184,6 +184,7 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'derekwyatt/vim-scala'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -437,7 +438,7 @@ nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Ri
 let g:syntastic_mode_map = {
   \ 'mode': 'active',
   \ 'active_filetypes': ['php', 'python', 'sh', 'ruby'],
-  \ 'passive_filetypes': ['haskell', 'html', 'cpp', 'c']
+  \ 'passive_filetypes': ['haskell', 'scala', 'java', 'html', 'cpp', 'c']
   \}
 
 " Python
