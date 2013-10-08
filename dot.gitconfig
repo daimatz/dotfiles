@@ -33,6 +33,7 @@
     excludesfile = ~/.gitignore
     editor = vim
     quotepath = false
+    pager = nkf -w | LESSCHARSET=utf-8 less
 [tig]
     line-graphics = ascii
     show-line-numbers = yes
