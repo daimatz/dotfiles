@@ -185,6 +185,7 @@ NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'derekwyatt/vim-scala'
+NeoBundle 'Shougo/vimshell.vim'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
