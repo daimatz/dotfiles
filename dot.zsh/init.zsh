@@ -173,12 +173,7 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 stty stop undef # C-s でロックされるのを防ぐ
 
-## cdr system stuff.
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-max 5000
-zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':completion:*' recent-dirs-insert both
+autoload add-zsh-hook
 
 . $HOME/.zsh/z/z.sh
 
