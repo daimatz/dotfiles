@@ -34,6 +34,11 @@ bind 1 only   # Emacs like
 bind 0 remove # Emacs like
 bind k kill
 
+bind H resize -h -3
+bind J resize -v +3
+bind K resize -v -3
+bind L resize -h +3
+
 autodetach on
 
 startup_message off
