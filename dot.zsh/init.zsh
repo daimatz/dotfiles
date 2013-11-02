@@ -9,7 +9,6 @@ export TERM=xterm-256color
 alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
 alias here="open ."
 alias crontab='crontab -i'
-alias ack='ack -i'
 alias vi='vim -u NONE --noplugin'
 alias psg='ps aux | grep -v grep | grep'
 alias e=vim
