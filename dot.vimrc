@@ -480,6 +480,8 @@ nnoremap [Haskell]i<CR> <ESC>
 nnoremap [Haskell]s     :<C-u>%!stylish-haskell<CR>
 au FileType haskell setlocal shiftwidth=4
 au FileType haskell setlocal tabstop=4
+au FileType cabal setlocal shiftwidth=4
+au FileType cabal setlocal tabstop=4
 
 " Erlang
 nnoremap [Erlang] <NOP>

@@ -123,7 +123,7 @@ function cabal-sandbox-install-executable() {
     cabal update
     cabal install $1
     [[ ! -d $executable_path ]] && mkdir -p $executable_path
-    [[ -d $install_path/.cabal-sandbox/bin ]] && ln -sf $install_path/.cabal-sandbox/bin/ghc-mod $symlink_path
+    [[ -d $install_path/.cabal-sandbox/bin ]] && ln -sf $install_path/.cabal-sandbox/bin/$1 $symlink_path
     echo "installed $1 to $install_path and symlinked to $symlink_path"
     cd - &> /dev/null
 }
