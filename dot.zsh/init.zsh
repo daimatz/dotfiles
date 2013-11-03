@@ -105,38 +105,27 @@ function g() {
     done
     echo $out
 }
-# cabal-dev install <executable package>
-# cabal-dev でインストールしたあと、実行バイナリを $HOME/local/bin に symlink
-function cabal-dev-install-executable() {
-    local package_path=$HOME/local/cabal-dev
+function cabal-sandbox-install-executable() {
+    local package_path=$HOME/local/cabal
     local executable_path=$HOME/local/bin
     if [ $# != 1 ]; then
-        err "Usage: cabal-dev-install <package>"
+        err "Usage: cabal-sandbox-install-executable <package>"
         err "    Please specify only one package."
         err "    The package will be installed to $package_path,"
         err "    and the executables will be symlinked to $executable_path."
         return 1
     fi
     local install_path=$package_path/$1
+    local symlink_path=$executable_path/$1
     [[ ! -d $install_path ]] && mkdir -p $install_path
     cd $install_path
-    cabal-dev update
-    cabal-dev install $1
+    cabal sandbox init
+    cabal update
+    cabal install $1
     [[ ! -d $executable_path ]] && mkdir -p $executable_path
-    [[ -d $install_path/cabal-dev/bin ]] && ln -sf $install_path/cabal-dev/bin/* $executable_path
-}
-function c() {
-    local package_path=cabal-dev/packages-${GHC_VERSION}.conf:
-    local sub=$1
-    if [ "$sub" = "run" ]; then
-        shift
-        GHC_PACKAGE_PATH=$package_path runghc $*
-    elif [ "$sub" = "compile" ]; then
-        shift
-        GHC_PACKAGE_PATH=$package_path ghc $*
-    else
-        cabal-dev $*
-    fi
+    [[ -d $install_path/.cabal-sandbox/bin ]] && ln -sf $install_path/.cabal-sandbox/bin/ghc-mod $symlink_path
+    echo "installed $1 to $install_path and symlinked to $symlink_path"
+    cd - &> /dev/null
 }
 # セパレータ
 # http://qiita.com/items/674b8582772747ede9c3
