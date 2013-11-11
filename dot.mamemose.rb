@@ -17,7 +17,7 @@ RECENT_PATTERN = /\.(md|markdown|txt|key|tex|pdf)$/
 host = "http://mamemose:20000"
 
 CUSTOM_HEADER = <<HEADER
-<script src="#{host}/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="#{host}/hidden/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   tex2jax: {
@@ -30,42 +30,3 @@ MathJax.Hub.Config({
 });
 </script>
 HEADER
-
-CUSTOM_FOOTER = <<FOOTER
-<link href="#{host}/syntaxhighlighter/styles/shCoreGitHub.css" rel="stylesheet" type="text/css" />
-<script src="#{host}/syntaxhighlighter/scripts/shCore.js" type="text/javascript"></script>
-<script src="#{host}/syntaxhighlighter/scripts/shAutoloader.js" type="text/javascript"></script>
-<script type="text/javascript">
-SyntaxHighlighter.autoloader(
-'AS3 as3 #{host}/syntaxhighlighter/scripts/shBrushAS3.js',
-'AppleScript applescript #{host}/syntaxhighlighter/scripts/shBrushAppleScript.js',
-'Bash bash sh #{host}/syntaxhighlighter/scripts/shBrushBash.js',
-'CSharp csharp cs #{host}/syntaxhighlighter/scripts/shBrushCSharp.js',
-'ColdFusion coldfusion #{host}/syntaxhighlighter/scripts/shBrushColdFusion.js',
-'Cpp cpp cc cxx #{host}/syntaxhighlighter/scripts/shBrushCpp.js',
-'Css css #{host}/syntaxhighlighter/scripts/shBrushCss.js',
-'Delphi delphi #{host}/syntaxhighlighter/scripts/shBrushDelphi.js',
-'Diff diff #{host}/syntaxhighlighter/scripts/shBrushDiff.js',
-'Erlang erlang #{host}/syntaxhighlighter/scripts/shBrushErlang.js',
-'Groovy groovy #{host}/syntaxhighlighter/scripts/shBrushGroovy.js',
-'JScript jscript javascript js #{host}/syntaxhighlighter/scripts/shBrushJScript.js',
-'Java java #{host}/syntaxhighlighter/scripts/shBrushJava.js',
-'JavaFX javafx #{host}/syntaxhighlighter/scripts/shBrushJavaFX.js',
-'Perl perl pl #{host}/syntaxhighlighter/scripts/shBrushPerl.js',
-'Php php #{host}/syntaxhighlighter/scripts/shBrushPhp.js',
-'Plain plain #{host}/syntaxhighlighter/scripts/shBrushPlain.js',
-'PowerShell powershell #{host}/syntaxhighlighter/scripts/shBrushPowerShell.js',
-'Python python py #{host}/syntaxhighlighter/scripts/shBrushPython.js',
-'Ruby ruby rb #{host}/syntaxhighlighter/scripts/shBrushRuby.js',
-'Sass sass #{host}/syntaxhighlighter/scripts/shBrushSass.js',
-'Scala scala #{host}/syntaxhighlighter/scripts/shBrushScala.js',
-'Sql sql #{host}/syntaxhighlighter/scripts/shBrushSql.js',
-'Vb vb #{host}/syntaxhighlighter/scripts/shBrushVb.js',
-'Xml xml html #{host}/syntaxhighlighter/scripts/shBrushXml.js',
-'Lisp lisp scheme elisp #{host}/syntaxhighlighter/scripts/shBrushLisp.js',
-'Haskell hs haskell #{host}/syntaxhighlighter/scripts/shBrushHaskell.js',
-'Latex latex #{host}/syntaxhighlighter/scripts/shBrushLatex.js'
-);
-SyntaxHighlighter.all();
-</script>
-FOOTER
