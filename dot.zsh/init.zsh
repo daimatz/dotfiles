@@ -14,7 +14,11 @@ alias psg='ps aux | grep -v grep | grep'
 alias e=vim
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
-alias simplehttpserver='python -m SimpleHTTPServer'
+if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
+    alias simplehttpserver='python -m SimpleHTTPServer'
+else
+    alias simplehttpserver='python -m http.server'
+fi
 
 # ruby
 alias b='bundle exec'
