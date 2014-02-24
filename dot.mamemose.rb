@@ -35,36 +35,36 @@ HEADER
 
 CUSTOM_FOOTER = <<FOOTER
 <link href="#{host}/styles/shCoreDefault.css" rel="stylesheet" type="text/css" />
-<script src="#{host}/scripts/shCore.js" type="text/javascript"></script>
-<script src="#{host}/scripts/shAutoloader.js" type="text/javascript"></script>
+<script src="#{host}/syntaxhighlighter/scripts/shCore.js" type="text/javascript"></script>
+<script src="#{host}/syntaxhighlighter/scripts/shAutoloader.js" type="text/javascript"></script>
 <script type="text/javascript">
 SyntaxHighlighter.autoloader(
-'AS3 as3 #{host}/scripts/shBrushAS3.js',
-'AppleScript applescript #{host}/scripts/shBrushAppleScript.js',
-'Bash sh bash #{host}/scripts/shBrushBash.js',
-'CSharp csharp #{host}/scripts/shBrushCSharp.js',
-'ColdFusion coldfusion #{host}/scripts/shBrushColdFusion.js',
-'Cpp c cc cpp #{host}/scripts/shBrushCpp.js',
-'Css css #{host}/scripts/shBrushCss.js',
-'Delphi delphi #{host}/scripts/shBrushDelphi.js',
-'Diff diff #{host}/scripts/shBrushDiff.js',
-'Erlang erlang #{host}/scripts/shBrushErlang.js',
-'Groovy groovy #{host}/scripts/shBrushGroovy.js',
-'JScript js jscript #{host}/scripts/shBrushJScript.js',
-'Java java #{host}/scripts/shBrushJava.js',
-'JavaFX javafx #{host}/scripts/shBrushJavaFX.js',
-'Perl pl perl #{host}/scripts/shBrushPerl.js',
-'Php php #{host}/scripts/shBrushPhp.js',
-'Plain plain #{host}/scripts/shBrushPlain.js',
-'PowerShell powershell #{host}/scripts/shBrushPowerShell.js',
-'Python py python #{host}/scripts/shBrushPython.js',
-'Ruby rb ruby #{host}/scripts/shBrushRuby.js',
-'Sass sass #{host}/scripts/shBrushSass.js',
-'Scala scala #{host}/scripts/shBrushScala.js',
-'Sql sql #{host}/scripts/shBrushSql.js',
-'Vb vb #{host}/scripts/shBrushVb.js',
-'Xml xml html #{host}/scripts/shBrushXml.js',
-'Haskell haskell hs #{host}/scripts/shBrushHaskell.js'
+'AS3 as3 #{host}/syntaxhighlighter/scripts/shBrushAS3.js',
+'AppleScript applescript #{host}/syntaxhighlighter/scripts/shBrushAppleScript.js',
+'Bash sh bash #{host}/syntaxhighlighter/scripts/shBrushBash.js',
+'CSharp csharp #{host}/syntaxhighlighter/scripts/shBrushCSharp.js',
+'ColdFusion coldfusion #{host}/syntaxhighlighter/scripts/shBrushColdFusion.js',
+'Cpp c cc cpp #{host}/syntaxhighlighter/scripts/shBrushCpp.js',
+'Css css #{host}/syntaxhighlighter/scripts/shBrushCss.js',
+'Delphi delphi #{host}/syntaxhighlighter/scripts/shBrushDelphi.js',
+'Diff diff #{host}/syntaxhighlighter/scripts/shBrushDiff.js',
+'Erlang erlang #{host}/syntaxhighlighter/scripts/shBrushErlang.js',
+'Groovy groovy #{host}/syntaxhighlighter/scripts/shBrushGroovy.js',
+'JScript js jscript #{host}/syntaxhighlighter/scripts/shBrushJScript.js',
+'Java java #{host}/syntaxhighlighter/scripts/shBrushJava.js',
+'JavaFX javafx #{host}/syntaxhighlighter/scripts/shBrushJavaFX.js',
+'Perl pl perl #{host}/syntaxhighlighter/scripts/shBrushPerl.js',
+'Php php #{host}/syntaxhighlighter/scripts/shBrushPhp.js',
+'Plain plain #{host}/syntaxhighlighter/scripts/shBrushPlain.js',
+'PowerShell powershell #{host}/syntaxhighlighter/scripts/shBrushPowerShell.js',
+'Python py python #{host}/syntaxhighlighter/scripts/shBrushPython.js',
+'Ruby rb ruby #{host}/syntaxhighlighter/scripts/shBrushRuby.js',
+'Sass sass #{host}/syntaxhighlighter/scripts/shBrushSass.js',
+'Scala scala #{host}/syntaxhighlighter/scripts/shBrushScala.js',
+'Sql sql #{host}/syntaxhighlighter/scripts/shBrushSql.js',
+'Vb vb #{host}/syntaxhighlighter/scripts/shBrushVb.js',
+'Xml xml html #{host}/syntaxhighlighter/scripts/shBrushXml.js',
+'Haskell haskell hs #{host}/syntaxhighlighter/scripts/shBrushHaskell.js'
 );
 SyntaxHighlighter.all();
 </script>
