@@ -294,7 +294,7 @@ augroup vimrcEx
     \   exe "normal! g`\"" |
     \ endif
   """自動的に cd
-  au BufEnter * execute ":lcd " . expand("%:p:h")
+  au BufEnter ^*/ execute ":lcd " . expand("%:p:h")
 augroup END
 
 """バイナリ編集(xxd)モード（vim -b での起動）
