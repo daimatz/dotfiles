@@ -366,6 +366,8 @@ nnoremap [TABCMD]m       :<C-u>vsp<CR>
 nnoremap [TABCMD]<CR>    :<C-u>vsp<CR>
 nnoremap [TABCMD]t       v
 nnoremap [TABCMD]=       <C-w>=
+nnoremap [TABCMD]N       :<C-u>tabmove +1<CR>
+nnoremap [TABCMD]P       :<C-u>tabmove -1<CR>
 vnoremap q               <ESC>
 
 nnoremap [Prefix]l       zz
