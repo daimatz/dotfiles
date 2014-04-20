@@ -501,9 +501,10 @@ noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w
 " Java (Eclim)
 nnoremap [EclimJava] <NOP>
 nmap [Prefix]j [EclimJava]
-nnoremap [EclimJava]s *N:<C-u>JavaSearchContext<CR>
+nnoremap [EclimJava]s *N:<C-u>JavaSearchContext<CR>zz
 nnoremap [EclimJava]S :<C-u>JavaSearch  <BS>
 nnoremap [EclimJava]i :<C-u>JavaImportOrganize<CR>
+au FileType java inoremap <C-@> <C-x><C-o>
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
 if !exists('g:neocomplcache_force_omni_patterns')
