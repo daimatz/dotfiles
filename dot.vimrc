@@ -368,10 +368,7 @@ nnoremap [TABCMD]t       v
 nnoremap [TABCMD]=       <C-w>=
 vnoremap q               <ESC>
 
-" 右手だけでスクロールできるように
 nnoremap [Prefix]l       zz
-nnoremap [Prefix]j       <C-f>
-nnoremap [Prefix]k       <C-b>
 nnoremap ,               0
 nnoremap .               $
 vnoremap ,               0
@@ -498,6 +495,19 @@ noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w
 "   w
 " endfunction
 " autocmd BufWritePre *.erl call s:ErlangReloadErrors()
+
+" Java (Eclim)
+nnoremap [EclimJava] <NOP>
+nmap [Prefix]j [EclimJava]
+nnoremap [EclimJava]s *N:<C-u>JavaSearchContext<CR>
+nnoremap [EclimJava]S :<C-u>JavaSearch  <BS>
+nnoremap [EclimJava]i :<C-u>JavaImportOrganize<CR>
+let g:EclimJavaSearchSingleResult = 'tabnew'
+let g:EclimCompletionMethod = 'omnifunc'
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 
 " gtags
 noremap [Gtags]     <NOP>
