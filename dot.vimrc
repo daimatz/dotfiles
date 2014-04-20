@@ -319,15 +319,15 @@ let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
 
 """キーバインド
-nnoremap <CR> <ESC>
-nnoremap [Prefix] <NOP>
+nnoremap <CR>         <ESC>
+nnoremap [Prefix]     <NOP>
 nnoremap [Prefix]<CR> <ESC>
-nmap     <Space> [Prefix]
+nmap     <Space>      [Prefix]
 nnoremap [Prefix]<CR> <ESC>
-vnoremap [Prefix] <NOP>
-vmap     <Space> [Prefix]
+vnoremap [Prefix]     <NOP>
+vmap     <Space>      [Prefix]
 vnoremap [Prefix]<CR> <ESC>
-vnoremap <CR> <ESC>
+vnoremap <CR>         <ESC>
 
 " x, X キーでヤンクしない
 nnoremap x "_x
@@ -370,29 +370,20 @@ nnoremap [TABCMD]N       :<C-u>tabmove +1<CR>
 nnoremap [TABCMD]P       :<C-u>tabmove -1<CR>
 vnoremap q               <ESC>
 
-nnoremap [Prefix]l       zz
-nnoremap ,               0
-nnoremap .               $
-vnoremap ,               0
-vnoremap .               $
-
 " 操作を楽・直感的にする系
-nnoremap <BS> ^
-vnoremap <BS> ^
+nnoremap <BS>  ^
+vnoremap <BS>  ^
 nnoremap <C-h> ^
 vnoremap <C-h> ^
-inoremap jj  <ESC>
-cnoremap jj  <ESC>
-nnoremap ;   :
-vnoremap ;   :
-nnoremap :   ;
-vnoremap :   ;
-nnoremap #   *Nzz
-nnoremap n   nzz
-nnoremap N   Nzz
-
-nnoremap //  :<C-u>Migemo<CR>
-
+inoremap jj    <ESC>
+cnoremap jj    <ESC>
+nnoremap ;     :
+vnoremap ;     :
+nnoremap :     ;
+vnoremap :     ;
+nnoremap #     *Nzz
+nnoremap n     nzz
+nnoremap N     Nzz
 cmap w!! w !sudo tee > /dev/null %
 
 " insert mode で Emacs キーバインド
@@ -488,9 +479,10 @@ au FileType cabal setlocal shiftwidth=4
 au FileType cabal setlocal tabstop=4
 
 " Erlang
-nnoremap [Erlang] <NOP>
-nmap [Prefix]e [Erlang]
-noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w<CR>
+nnoremap [Erlang]     <NOP>
+nmap     [Prefix]e    [Erlang]
+nnoremap [Erlang]<CR> <ESC>
+noremap  [Erlang]c    :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w<CR>
 " function! s:ErlangReloadErrors()
 "   ErlangDisableShowErrors
 "   ErlangEnableShowErrors
@@ -499,11 +491,12 @@ noremap [Erlang]c :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w
 " autocmd BufWritePre *.erl call s:ErlangReloadErrors()
 
 " Java (Eclim)
-nnoremap [EclimJava] <NOP>
-nmap [Prefix]j [EclimJava]
-nnoremap [EclimJava]s *N:<C-u>JavaSearchContext<CR>zz
-nnoremap [EclimJava]S :<C-u>JavaSearch  <BS>
-nnoremap [EclimJava]i :<C-u>JavaImportOrganize<CR>
+nnoremap [EclimJava]     <NOP>
+nmap     [Prefix]j       [EclimJava]
+nnoremap [EclimJava]<CR> <ESC>
+nnoremap [EclimJava]s    *N:<C-u>JavaSearchContext<CR>zz
+nnoremap [EclimJava]S    :<C-u>JavaSearch  <BS>
+nnoremap [EclimJava]i    :<C-u>JavaImportOrganize<CR>
 au FileType java inoremap <C-@> <C-x><C-o>
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
