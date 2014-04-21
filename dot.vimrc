@@ -425,6 +425,7 @@ nnoremap [Util]o         m`:<C-u>Unite -direction=botright outline<CR>
 nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
+nnoremap [Util]l         :<C-u>Unite -direction=botright location_list<CR>
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
@@ -490,6 +491,32 @@ noremap  [Erlang]c    :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<C
 " endfunction
 " autocmd BufWritePre *.erl call s:ErlangReloadErrors()
 
+fun! GetBufferListOutputAsOneString()
+    let buffer_list = ''
+    redir =>> buffer_list
+    ls
+    redir END
+    return buffer_list
+endfun
+fun! IsLocationListBuffer()
+  if &ft != 'qf'
+    return 0
+  endif
+  silent let buffer_list = GetBufferListOutputAsOneString()
+  let l:quickfix_match = matchlist(buffer_list,
+              \ '\n\s*\(\d\+\)[^\n]*Quickfix List')
+  if empty(l:quickfix_match)
+    return 1
+  endif
+  let quickfix_bufnr = l:quickfix_match[1]
+  return quickfix_bufnr == bufnr('%') ? 0 : 1
+endfun
+fun! ReopenLocationListByUnite()
+  if IsLocationListBuffer()
+    execute ":q" | execute ":Unite -direction=botright -default-action=tabopen location_list"
+  endif
+endfun
+
 " Java (Eclim)
 nnoremap [EclimJava]     <NOP>
 nmap     [Prefix]j       [EclimJava]
@@ -498,6 +525,7 @@ nnoremap [EclimJava]s    *N:<C-u>JavaSearchContext<CR>zz
 nnoremap [EclimJava]S    :<C-u>JavaSearch  <BS>
 nnoremap [EclimJava]i    :<C-u>JavaImportOrganize<CR>
 au FileType java inoremap <C-@> <C-x><C-o>
+au FileType qf call ReopenLocationListByUnite()
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
 if !exists('g:neocomplcache_force_omni_patterns')
