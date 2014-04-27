@@ -368,6 +368,8 @@ nnoremap [TABCMD]t       v
 nnoremap [TABCMD]=       <C-w>=
 nnoremap [TABCMD]N       :<C-u>tabmove +1<CR>
 nnoremap [TABCMD]P       :<C-u>tabmove -1<CR>
+nnoremap [TABCMD]f       :<C-u>tabedit .<CR>
+
 vnoremap q               <ESC>
 
 " 操作を楽・直感的にする系

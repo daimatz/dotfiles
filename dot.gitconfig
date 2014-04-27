@@ -32,6 +32,10 @@
     ignore = !"f() { local s=$1; shift; \
       while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
       curl "http://www.gitignore.io/api/$s"; }; f"
+    sync-master = !"git checkout master && \
+      git remote update && \
+      git reset --hard origin/master && \
+      git branch -d $(git branch --merged | grep -v master | grep -v '*')"
 [core]
     excludesfile = ~/.gitignore
     editor = vim
