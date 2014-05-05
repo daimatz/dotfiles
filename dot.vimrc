@@ -552,7 +552,7 @@ set rtp^=${GOPATH}/src/github.com/nsf/gocode/vim
 if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
-let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.go = '\k\.\k*'
 au BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set ft=go sw=4 noexpandtab ts=4
 au FileType go compiler go
