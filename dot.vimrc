@@ -529,14 +529,21 @@ nnoremap [EclimJava]<CR> <ESC>
 nnoremap [EclimJava]s    *N:<C-u>JavaSearchContext<CR>zz
 nnoremap [EclimJava]S    :<C-u>JavaSearch  <BS>
 nnoremap [EclimJava]i    :<C-u>JavaImportOrganize<CR>
+nnoremap [EclimScala]    <NOP>
+nmap     [Prefix]s       [EclimScala]
+nnoremap [EclimScala]<CR> <ESC>
+nnoremap [EclimScala]s   *N:<C-u>ScalaSearch<CR>zz
 au FileType java inoremap <C-@> <C-x><C-o>
+au FileType scala inoremap <C-@> <C-x><C-o>
 au FileType qf call ReopenLocationListByUnite()
 let g:EclimJavaSearchSingleResult = 'tabnew'
+let g:EclimScalaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
 if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+"let g:neocomplcache_force_omni_patterns.scala = '\k\.\k*'
 
 " Go
 let g:gofmt_command = 'goimports'
