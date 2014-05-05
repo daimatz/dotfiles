@@ -53,6 +53,9 @@ set wildmenu
 
 set wildmode=list:longest,full
 
+" 上下10行を保ってスクロール
+set scrolloff=10
+
 "スプラッシュ(起動時のメッセージ)を表示しない
 set shortmess+=I
 
