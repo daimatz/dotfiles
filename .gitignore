@@ -1,3 +1,5 @@
 .netrwhist
 dot.vim/eclim
 dot.vim/plugin/eclim.vim
+dot.vim/autoload/gocomplete.vim
+dot.vim/ftplugin/go/
