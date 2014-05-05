@@ -91,9 +91,8 @@ function! s:tabToSpace()
   %s/\t/  /ge
   call setpos(".", s:cursor)
 endfunction
-autocmd BufWritePre
-  \ [^M]*\|M[^a]*\|Ma[^k]*\|Mak[^e]*\|Make[^f]*\|Makef[^i]*\|Makefi[^l]*\|Makefil[^e]*
-  \ call s:tabToSpace()
+let blacklist = ['make', 'go']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | call s:tabToSpace() | endif
 " TeX 用
 function! s:replace_comma_dot()
   let s:cursor = getpos(".")
@@ -307,6 +306,7 @@ augroup BinaryXXD
   autocmd BufReadPost * if &binary | silent %!xxd -g 1
   autocmd BufReadPost * set ft=xxd | endif
   autocmd BufWritePre * if &binary | %!xxd -r
+  autocmd BufWritePre * set ft=xxd | endif
   autocmd BufWritePost * if &binary | silent %!xxd -g 1
   autocmd BufWritePost * set nomod | endif
 augroup END
@@ -537,6 +537,18 @@ if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
+
+" Go
+let g:gofmt_command = 'goimports'
+set rtp^=${GOROOT}/misc/vim
+set rtp^=${GOPATH}/src/github.com/nsf/gocode/vim
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+au BufWritePre *.go Fmt
+au BufNewFile,BufRead *.go set ft=go sw=4 noexpandtab ts=4
+au FileType go compiler go
 
 " gtags
 noremap [Gtags]     <NOP>
