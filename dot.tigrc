@@ -1,0 +1,94 @@
+set line-graphics = ascii
+set diff-view = line-number:yes,interval=1 text
+
+bind diff l next
+bind diff h previous
+bind diff L scroll-right
+bind diff H scroll-left
+bind generic ; screen-redraw
+bind generic <Backspace> view-close
+
+color cursor      white color237
+color status      white default
+color title-focus white default
+color title-blur  black black
+color delimiter   white default
+color line-number white default
+color id          green default
+color date        cyan default
+color author      yellow default
+color mode        white default
+color graph-commit magenta default
+
+# raw commit header
+color commit    white default
+color parent    white default
+color tree      white default
+color committer white default
+
+# palette?
+color palette-0      white default
+color palette-1      white default
+color palette-2      white default
+color palette-3      white default
+color palette-4      white default
+color palette-5      white default
+color palette-6      white default
+
+# main
+color main-commit    yellow default
+color main-head      yellow default
+color main-remote    yellow default
+color main-tracked   yellow default
+color main-tag       yellow default
+color main-local-tag yellow default
+color main-ref       yellow default
+
+# status
+color status.header   white default
+color status.section  white default
+color stat-staged     white default
+color stat-unstaged   white default
+color stat-untracked  white default
+
+# tree
+color tree.header    white default
+color tree.directory white default
+color tree.file      white default
+
+# diff
+color diff-header         cyan default
+color diff-chunk          cyan default
+color diff-add            green default
+color diff-del            red default
+color diff-oldmode        white default
+color diff-newmode        white default
+color 'copy from '        white default
+color 'copy to '          white default
+color 'rename from '      white default
+color 'rename to '        white default
+color 'deleted file mode' white default
+color 'similarity '       white default
+color 'dissimilarity '    white default
+color 'diff-tree '        white default
+color diff-index          white default
+color diff-stat           white default
+
+# pretty print = white default
+color 'Author:'     yellow default
+color 'Commit:'     yellow default
+color pp-merge      yellow default
+color 'Date:'       yellow default
+color 'AuthoDate:'  yellow default
+color 'CommitDate:' yellow default
+color pp-refs       yellow default
+
+# commit message
+color '    Signed-off-by' white default
+color '    Acked-by'      white default
+color '    Reviewed-by'   white default
+color '    Tested-by'     white default
+
+# tree
+color tree.directory white default
+color tree.file      white default
