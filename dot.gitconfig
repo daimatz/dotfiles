@@ -5,10 +5,6 @@
     default = tracking
 [pull]
     rebase = true
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
 [color]
     ui = auto
 [diff]
@@ -27,7 +23,8 @@
     la = log --graph --decorate --pretty=format:'%ad %h (%an):%Cgreen%d%Creset %s' --date=iso
     cat = !"f() { git show $1:$2; }; f"
     ru = remote update --prune
-    now = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
+    now = !"f() { git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
+    nowa = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     addw = !"git diff -w --no-color | git apply --cached"
     ignore = !"f() { local s=$1; shift; \
       while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
@@ -40,4 +37,3 @@
     excludesfile = ~/.gitignore
     editor = vim
     quotepath = false
-    pager = nkf -w | LESSCHARSET=utf-8 less
