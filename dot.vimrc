@@ -189,6 +189,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/neomru.vim'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -429,12 +430,12 @@ nnoremap [Util]d         <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><
 nnoremap [Util]o         m`:<C-u>Unite -direction=botright outline<CR>
 nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
+nnoremap [Util]f         :<C-u>Unite -direction=botright file_mru<CR>
 nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
 nnoremap [Util]l         :<C-u>Unite -direction=botright location_list<CR>
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
-nnoremap [Util]f         :VimFiler<CR>
 
 " Syntastic
 let g:syntastic_mode_map = {
