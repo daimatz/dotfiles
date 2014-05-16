@@ -37,3 +37,4 @@
     excludesfile = ~/.gitignore
     editor = vim
     quotepath = false
+    pager = "f() { if which diff-highlight &> /dev/null; then diff-highlight | less; else less; fi }; f"
