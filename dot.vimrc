@@ -173,7 +173,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'tpope/vim-markdown'
-NeoBundle 'joker1007/vim-markdown-quote-syntax'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'mattn/wiseman-f-vim'
@@ -316,6 +315,27 @@ augroup END
 autocmd BufNewFile,BufRead *.txt set ft=markdown
 au FileType markdown setlocal shiftwidth=4
 au FileType markdown setlocal tabstop=4
+let g:markdown_fenced_languages = [
+\  'c', 'cpp', 'cc=cpp', 'cs',
+\  'css',
+\  'erb=eruby',
+\  'erlang', 'erl=erlang',
+\  'go',
+\  'groovy',
+\  'haskell', 'hs=haskell',
+\  'html', 'xml',
+\  'java',
+\  'javascript', 'js=javascript', 'json=javascript',
+\  'ml=ocaml',
+\  'perl', 'pl=perl',
+\  'php',
+\  'python', 'py=python',
+\  'ruby', 'rb=ruby',
+\  'scala',
+\  'scheme', 'scm=scheme',
+\  'sh', 'bash=sh',
+\  'sql',
+\]
 
 """haskell
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
