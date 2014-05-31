@@ -75,9 +75,6 @@ set iskeyword+=45
 set splitbelow
 set splitright
 
-" ag (the_silver_searcher) を使う
-set grepprg=ag\ --nocolor
-
 "保存時に行末の空白を除去する
 function! s:trim()
   let s:cursor = getpos(".")
@@ -296,8 +293,6 @@ augroup vimrcEx
     \ if line("'\"") > 1 && line("'\"") <= line('$') |
     \   exe "normal! g`\"" |
     \ endif
-  """自動的に cd
-  au BufEnter * execute ":lcd " . expand("%:p:h")
 augroup END
 
 """バイナリ編集(xxd)モード（vim -b での起動）
@@ -377,8 +372,8 @@ nnoremap [TABCMD]        <NOP>
 nmap     t               [TABCMD]
 nnoremap [TABCMD]n       :<C-u>tabnext<CR>
 nnoremap [TABCMD]p       :<C-u>tabprevious<CR>
-nnoremap [TABCMD]e       :<C-u>tabedit  <BS>
-nnoremap [TABCMD]c       :<C-u>tabedit  <BS>
+nnoremap [TABCMD]e       :<C-u>tabedit %:p:h
+nnoremap [TABCMD]c       :<C-u>tabedit %:p:h
 nnoremap [TABCMD]h       <C-w>h
 nnoremap [TABCMD]j       <C-w>j
 nnoremap [TABCMD]k       <C-w>k
@@ -392,7 +387,7 @@ nnoremap [TABCMD]t       v
 nnoremap [TABCMD]=       <C-w>=
 nnoremap [TABCMD]N       :<C-u>tabmove +1<CR>
 nnoremap [TABCMD]P       :<C-u>tabmove -1<CR>
-nnoremap [TABCMD]f       :<C-u>tabedit .<CR>
+nnoremap [TABCMD]f       :<C-u>tabedit %:p:h<CR>
 
 vnoremap q               <ESC>
 
@@ -451,8 +446,15 @@ nnoremap [Util]o         m`:<C-u>Unite -direction=botright outline<CR>
 nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file_mru<CR>
-nnoremap [Util]g         :grep  \| Unite -direction=botright quickfix<Home><C-Right><Right>
+nnoremap [Util]g         :<C-u>Unite -direction=botright -buffer-name=search-buffer grep:.<CR>
+nnoremap [Util]u         :<C-u>UniteResume search-buffer<CR>
 nnoremap [Util]l         :<C-u>Unite -direction=botright location_list<CR>
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
