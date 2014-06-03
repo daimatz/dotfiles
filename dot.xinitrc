@@ -16,13 +16,12 @@ fi
 # exec startxfce4
 # ...or the Window Manager of your choice
 
+# write "/usr/bin/ibus-daemon --xim --replace" to Window System's start up
 export XIM=ibus
 export XIM_PROGRAM=/usr/bin/ibus-daemon
 export XIM_ARGS="--xim"
 export XMODIFIERS="@im=ibus"
-export GTK_IM_MODULE="ibus"
 export QT_IM_MODULE="xim"
-ibus-daemon --xim -d &
 
 export VDPAU_NVIDIA_NO_OVERLAY=1 # for flash
 
@@ -30,4 +29,4 @@ xset -b
 
 xmodmap ~/.Xmodmap
 
-exec ck-launch-session dbus-launch startkde
+exec dbus-launch startkde
