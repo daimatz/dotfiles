@@ -293,6 +293,7 @@ augroup vimrcEx
     \ if line("'\"") > 1 && line("'\"") <= line('$') |
     \   exe "normal! g`\"" |
     \ endif
+  au BufEnter * execute ":lcd " . expand("%:p:h")
 augroup END
 
 """バイナリ編集(xxd)モード（vim -b での起動）
@@ -372,8 +373,8 @@ nnoremap [TABCMD]        <NOP>
 nmap     t               [TABCMD]
 nnoremap [TABCMD]n       :<C-u>tabnext<CR>
 nnoremap [TABCMD]p       :<C-u>tabprevious<CR>
-nnoremap [TABCMD]e       :<C-u>tabedit %:p:h
-nnoremap [TABCMD]c       :<C-u>tabedit %:p:h
+nnoremap [TABCMD]e       :<C-u>tabedit  <BS>
+nnoremap [TABCMD]c       :<C-u>tabedit  <BS>
 nnoremap [TABCMD]h       <C-w>h
 nnoremap [TABCMD]j       <C-w>j
 nnoremap [TABCMD]k       <C-w>k
@@ -387,7 +388,7 @@ nnoremap [TABCMD]t       v
 nnoremap [TABCMD]=       <C-w>=
 nnoremap [TABCMD]N       :<C-u>tabmove +1<CR>
 nnoremap [TABCMD]P       :<C-u>tabmove -1<CR>
-nnoremap [TABCMD]f       :<C-u>tabedit %:p:h<CR>
+nnoremap [TABCMD]f       :<C-u>tabedit .<CR>
 
 vnoremap q               <ESC>
 
