@@ -175,11 +175,11 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'mattn/wiseman-f-vim'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
-NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'jimenezrick/vimerl'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
+NeoBundle 'hewes/unite-gtags'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'derekwyatt/vim-scala'
@@ -519,32 +519,6 @@ noremap  [Erlang]c    :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<C
 " endfunction
 " autocmd BufWritePre *.erl call s:ErlangReloadErrors()
 
-fun! GetBufferListOutputAsOneString()
-    let buffer_list = ''
-    redir =>> buffer_list
-    ls
-    redir END
-    return buffer_list
-endfun
-fun! IsLocationListBuffer()
-  if &ft != 'qf'
-    return 0
-  endif
-  silent let buffer_list = GetBufferListOutputAsOneString()
-  let l:quickfix_match = matchlist(buffer_list,
-              \ '\n\s*\(\d\+\)[^\n]*Quickfix List')
-  if empty(l:quickfix_match)
-    return 1
-  endif
-  let quickfix_bufnr = l:quickfix_match[1]
-  return quickfix_bufnr == bufnr('%') ? 0 : 1
-endfun
-fun! ReopenLocationListByUnite()
-  if IsLocationListBuffer()
-    execute ":q" | execute ":Unite -direction=botright -default-action=tabopen location_list"
-  endif
-endfun
-
 " Java (Eclim)
 nnoremap [EclimJava]     <NOP>
 nmap     [Prefix]j       [EclimJava]
@@ -558,7 +532,6 @@ nnoremap [EclimScala]<CR> <ESC>
 nnoremap [EclimScala]s   *N:<C-u>ScalaSearch<CR>zz
 au FileType java inoremap <C-@> <C-x><C-o>
 au FileType scala inoremap <C-@> <C-x><C-o>
-au FileType qf call ReopenLocationListByUnite()
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimScalaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
@@ -584,6 +557,4 @@ au FileType go compiler go
 noremap [Gtags]     <NOP>
 nmap    [Prefix]g   [Gtags]
 noremap [Gtags]<CR> <ESC>
-noremap [Gtags]g    :<C-u>Gtags<CR>
-noremap [Gtags]f    :<C-u>Gtags -f %<CR>
-noremap [Gtags]c    :<C-u>GtagsCursor<CR>
+noremap [Gtags]g    :<C-u>Unite -direction=botright -default-action=tabopen gtags/def<CR>
