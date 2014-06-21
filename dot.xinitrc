@@ -26,7 +26,8 @@ export QT_IM_MODULE="xim"
 export VDPAU_NVIDIA_NO_OVERLAY=1 # for flash
 
 xset -b
+xset r rate 250 50
 
 xmodmap ~/.Xmodmap
 
-exec dbus-launch startkde
+exec dbus-launch awesome
