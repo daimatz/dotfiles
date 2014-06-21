@@ -217,6 +217,44 @@ autoload -Uz vcs_info
 autoload -Uz is-at-least
 autoload -Uz colors
 
+# peco integration
+if which tac > /dev/null; then; alias tac="tac"; else; alias tac="tail -r"; fi
+
+function peco_select_history() {
+    BUFFER=$(fc -l -n 1 | tac | peco)
+    CURSOR=$#BUFFER
+    zle -R -c
+}
+zle -N peco_select_history
+bindkey "^G^S" peco_select_history
+setopt hist_ignore_all_dups
+
+function peco_select_directory() {
+    local dest=$(_z -r 2>&1 | tac | peco | awk '{ print $2 }')
+    [[ -n "$dest" ]] && builtin cd $dest
+    unset dest
+    zle reset-prompt
+}
+zle -N peco_select_directory
+bindkey "^G^J" peco_select_directory
+
+function peco_select_repository() {
+    local dest=$(ghq list --full-path | peco)
+    [[ -n "$dest" ]] && builtin cd $dest
+    unset dest
+    zle reset-prompt
+}
+zle -N peco_select_repository
+bindkey "^G^R" peco_select_repository
+
+function peco_select_process() {
+    BUFFER=$(ps aux | peco | awk '{ print $2 }')
+    CURSOR=$#BUFFER
+    zle -R -c
+}
+zle -N peco_select_process
+bindkey "^G^P" peco_select_process
+
 # 以下の3つのメッセージをエクスポートする
 #   $vcs_info_msg_0_ : 通常メッセージ用 (緑)
 #   $vcs_info_msg_1_ : 警告メッセージ用

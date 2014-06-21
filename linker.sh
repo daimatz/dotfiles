@@ -5,6 +5,7 @@ DOTFILES=$HOME/dotfiles
 \rm -rf $HOME/.zsh $HOME/.vim
 ln -s $DOTFILES/dot.zsh $HOME/.zsh
 ln -s $DOTFILES/dot.vim $HOME/.vim
+ln -s $DOTFILES/dot.peco $HOME/.peco
 
 for i in $DOTFILES/dot.*; do
     if [ -f $i ]; then
