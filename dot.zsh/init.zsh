@@ -226,7 +226,7 @@ function peco_select_history() {
     zle -R -c
 }
 zle -N peco_select_history
-bindkey "^G^S" peco_select_history
+bindkey "^S" peco_select_history
 setopt hist_ignore_all_dups
 
 function peco_select_directory() {
@@ -236,7 +236,7 @@ function peco_select_directory() {
     zle reset-prompt
 }
 zle -N peco_select_directory
-bindkey "^G^J" peco_select_directory
+bindkey "^J" peco_select_directory
 
 function peco_select_repository() {
     local dest=$(ghq list --full-path | peco)
@@ -245,7 +245,7 @@ function peco_select_repository() {
     zle reset-prompt
 }
 zle -N peco_select_repository
-bindkey "^G^R" peco_select_repository
+bindkey "^G" peco_select_repository
 
 function peco_select_process() {
     BUFFER=$(ps aux | peco | awk '{ print $2 }')
@@ -253,7 +253,7 @@ function peco_select_process() {
     zle -R -c
 }
 zle -N peco_select_process
-bindkey "^G^P" peco_select_process
+bindkey "^Z" peco_select_process
 
 # 以下の3つのメッセージをエクスポートする
 #   $vcs_info_msg_0_ : 通常メッセージ用 (緑)
