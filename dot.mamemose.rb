@@ -64,7 +64,8 @@ SyntaxHighlighter.autoloader(
 'Sql sql #{host}/syntaxhighlighter/scripts/shBrushSql.js',
 'Vb vb #{host}/syntaxhighlighter/scripts/shBrushVb.js',
 'Xml xml html #{host}/syntaxhighlighter/scripts/shBrushXml.js',
-'Haskell haskell hs #{host}/syntaxhighlighter/scripts/shBrushHaskell.js'
+'Haskell haskell hs #{host}/syntaxhighlighter/scripts/shBrushHaskell.js',
+'Golang golang go #{host}/syntaxhighlighter/scripts/shBrushGo.js'
 );
 SyntaxHighlighter.all();
 </script>
