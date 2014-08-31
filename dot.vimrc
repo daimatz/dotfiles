@@ -186,6 +186,8 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'fatih/vim-go'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -435,7 +437,7 @@ inoremap <C-@> <C-n>
 
 " Utility Keybinds
 nnoremap [Util]          <NOP>
-vmap     [Prefix]<Space> <ESC>[Util]
+vmap     [Prefix]<Space> [Util]
 nnoremap [Prefix]<CR>    <ESC>
 nmap     [Prefix]<Space> [Util]
 " QuickRun
@@ -541,18 +543,6 @@ if !exists('g:neocomplcache_force_omni_patterns')
 endif
 let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 "let g:neocomplcache_force_omni_patterns.scala = '\k\.\k*'
-
-" Go
-let g:gofmt_command = 'goimports'
-set rtp^=${GOROOT}/misc/vim
-set rtp^=${GOPATH}/src/github.com/nsf/gocode/vim
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.go = '\k\.\k*'
-au BufWritePre *.go Fmt
-au BufNewFile,BufRead *.go set ft=go sw=4 noexpandtab ts=4
-au FileType go compiler go
 
 " gtags
 noremap [Gtags]     <NOP>
