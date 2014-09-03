@@ -150,6 +150,7 @@ fi
 # zsh っぽい設定
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
+setopt hist_ignore_space    # not leave history if beginning of command is a space
 bindkey -e
 function tcsh-backward-delete-word() {
     local WORDCHARS=

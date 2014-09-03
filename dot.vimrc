@@ -469,6 +469,10 @@ let g:syntastic_mode_map = {
   \ 'passive_filetypes': ['haskell', 'scala', 'java', 'html', 'cpp', 'c']
   \}
 
+if !exists('g:neocomplcache_force_omni_patterns')
+  let g:neocomplcache_force_omni_patterns = {}
+endif
+
 " Python
 nnoremap [Python]       <NOP>
 nmap     [Prefix]p      [Python]
@@ -538,11 +542,12 @@ au FileType scala inoremap <C-@> <C-x><C-o>
 let g:EclimJavaSearchSingleResult = 'tabnew'
 let g:EclimScalaSearchSingleResult = 'tabnew'
 let g:EclimCompletionMethod = 'omnifunc'
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
 let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
 "let g:neocomplcache_force_omni_patterns.scala = '\k\.\k*'
+
+" Golang
+let g:neocomplcache_force_omni_patterns.go = '\k\.\k*'
+au BufNewFile,BufRead *.go set ft=go sw=4 noexpandtab ts=4
 
 " gtags
 noremap [Gtags]     <NOP>
