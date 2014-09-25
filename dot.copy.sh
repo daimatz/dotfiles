@@ -12,7 +12,7 @@ while :; do
     echo "changed."
     cat $FILE
     checksum=`$hashcmd $FILE`
-    pbcopy < ~/.copyfile
+    pbcopy < $FILE
   fi
   sleep 1
 done
