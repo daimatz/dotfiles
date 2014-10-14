@@ -27,8 +27,8 @@
     nowa = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     addw = !"git diff -w --no-color | git apply --cached"
     ignore = !"f() { local s=$1; shift; \
-      while [ $# -gt 0 ]; do s="$s,$1"; shift; done;\
-      curl "http://www.gitignore.io/api/$s"; }; f"
+      while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
+      curl \"https://www.gitignore.io/api/$s\"; }; f"
     sync-master = !"git checkout master && \
       git remote update && \
       git reset --hard origin/master && \
