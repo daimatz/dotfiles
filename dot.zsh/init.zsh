@@ -11,7 +11,6 @@ alias here="open ."
 alias crontab='crontab -i'
 alias vi='vim -u NONE --noplugin'
 alias psg='ps aux | grep -v grep | grep'
-alias git=hub
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
 alias csv='column -s, -t'
@@ -19,16 +18,6 @@ if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'
 else
     alias simplehttpserver='python -m http.server'
-fi
-
-# ruby
-alias b='bundle exec'
-
-# clipboard copy command
-if [ $OSTYPE = "linux*" ]; then
-    alias clip='xsel -b --display :0.0'
-elif [ $OSTYPE = "darwin*" ]; then
-    alias clip='reattach-to-user-namespace pbcopy'
 fi
 
 # hogehoge G で hogehoge | grep になるとか
