@@ -14,6 +14,7 @@ alias psg='ps aux | grep -v grep | grep'
 alias json='python -mjson.tool'
 alias xml='xmllint --format -'
 alias csv='column -s, -t'
+alias clear='echo c'
 if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'
 else
