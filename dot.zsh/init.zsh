@@ -15,6 +15,7 @@ alias json='python -mjson.tool'
 alias xml='xmllint --format -'
 alias csv='column -s, -t'
 alias clear='echo c'
+alias sum="awk '{s+=\$1}END{print s}'"
 if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'
 else
@@ -31,6 +32,22 @@ which gmv &> /dev/null && alias mv='gmv'
 if which gls &> /dev/null; then alias ls="gls $LSOPTION"
 else alias ls="ls $LSOPTION"; fi
 
+function realpath() {
+    if [ "$1" = "" ]; then
+        err "usage: realpath <path>"
+        return
+    fi
+    python -c "import os.path; print(os.path.realpath('$1'))"
+}
+function relpath() {
+    if [ "$1" = "" ]; then
+        err "usage: relpath <to> [from]"
+        return
+    fi
+    to=$1
+    from=$2
+    python -c "import os.path; print(os.path.relpath('$to', '$from'))"
+}
 # そのプロセスがいなければ立ち上げる
 function run_unless() {
     if [ -z "$2" ]; then
