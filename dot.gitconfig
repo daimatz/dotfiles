@@ -26,13 +26,35 @@
     now = !"f() { git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     nowa = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     addw = !"git diff -w --no-color | git apply --cached"
-    ignore = !"f() { local s=$1; shift; \
-      while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
-      curl \"https://www.gitignore.io/api/$s\"; }; f"
-    sync-master = !"git checkout master && \
+    ignore = !" \
+      f() { \
+          local s=$1; \
+          shift; \
+          while [ $# -gt 0 ]; do \
+              s=\"$s,$1\"; \
+              shift; \
+          done;\
+          curl \"https://www.gitignore.io/api/$s\"; \
+      }; \
+      f"
+    sync-master = !" \
+      git checkout master && \
       git remote update && \
       git reset --hard origin/master && \
-      git branch -d $(git branch --merged | grep -v master | grep -v '*')"
+      git branch -d $(git branch --merged | grep -v master | grep -v '*') \
+      "
+    sls = !" \
+      f() { \
+          str=`git status -s` ; \
+          out= ; \
+          while [ -n \"$1\" ]; do \
+              k=`echo $str | awk \"{print \\\\$2}\" | awk \"NR==$1\"` ; \
+              out=\"$out $k\" ; \
+              shift ; \
+          done ; \
+          echo $out ; \
+      }; \
+      f"
 [core]
     excludesfile = ~/.gitignore
     editor = vim

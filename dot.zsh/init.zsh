@@ -16,6 +16,7 @@ alias xml='xmllint --format -'
 alias csv='column -s, -t'
 alias clear='echo c'
 alias sum="awk '{s+=\$1}END{print s}'"
+alias gg='git grep -E --break --heading --line-number'
 if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'
 else
@@ -104,18 +105,6 @@ function test() {
         return 1
     fi
     time ./$file < $in
-}
-# git status -s で表示した n 行目のファイルを取ってくる。
-# git checkout `g 2 3` のように使う
-function g() {
-    str=`git status -s`
-    out=
-    while [ -n "$1" ]; do
-        k=$(echo $str | awk "{print \$2}" | awk "NR==$1")
-        out="$out $k"
-        shift
-    done
-    echo $out
 }
 function cabal-sandbox-install-executable() {
     local package_path=$HOME/local/cabal
