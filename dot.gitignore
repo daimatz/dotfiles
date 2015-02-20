@@ -13,6 +13,5 @@ GPATH
 GSYMS
 GRTAGS
 GTAGS
-Vagrantfile
 .vagrant/
 ,*
