@@ -86,10 +86,10 @@ endfunction
 
 """NeoBundle
 filetype off
-if has('vim_starting')
-  set runtimepath+=~/.vim/neobundle.vim
-  call neobundle#rc(expand('~/.bundle'))
-endif
+set runtimepath+=~/.vim/neobundle.vim
+call neobundle#begin(expand('~/.bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
 
 """Bundle
 NeoBundle 'Shougo/neocomplcache'
