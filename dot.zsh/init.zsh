@@ -34,6 +34,29 @@ which gmv &> /dev/null && alias mv='gmv'
 if which gls &> /dev/null; then alias ls="gls $LSOPTION"
 else alias ls="ls $LSOPTION"; fi
 
+function dump_proxy() {
+    from=$1
+    to=$2
+    host=$3
+    if [ "$from" = "" -o "$to" = "" ]; then
+        err "Usage: $0 <from port> <to port> [host]"
+        err ""
+        err "Make a proxy server from <from port> to <to port>, dumping the content"
+        err "if [host] is empty, use localhost"
+        return
+    fi
+    if [ "$host" = "" ]; then
+        host=127.0.0.1
+    fi
+    fifo=$(mktemp -u)
+    echo "created fifo: $fifo ..."
+    mkfifo $fifo
+    sigs=(SIGHUP SIGINT SIGQUIT SIGTERM)
+    trap "rm $fifo; trap $sigs; return" $sigs
+    while :; do
+        nc -k -l $from < $fifo | tee /dev/stderr | nc $host $to | tee /dev/stderr > $fifo
+    done
+}
 function realpath() {
     if [ "$1" = "" ]; then
         err "usage: realpath <path>"
