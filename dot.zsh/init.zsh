@@ -6,17 +6,18 @@ function err() {
 export TERM=xterm-256color
 
 # alias
-alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
-alias here="open ."
-alias crontab='crontab -i'
-alias vi='vim -u NONE --noplugin'
-alias psg='ps aux | grep -v grep | grep'
-alias json='python -mjson.tool'
-alias xml='xmllint --format -'
-alias csv='column -s, -t'
 alias clear='echo c'
-alias sum="awk '{s+=\$1}END{print s}'"
+alias crontab='crontab -i'
+alias csv='column -s, -t'
 alias gg='git grep -E --break --heading --line-number'
+alias here="open ."
+alias json='python -mjson.tool'
+alias psg='ps aux | grep -v grep | grep'
+alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
+alias sum="awk '{s+=\$1}END{print s}'"
+alias vi='vim -u NONE --noplugin'
+alias vim='P=$(pwd) vim'
+alias xml='xmllint --format -'
 if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'
 else
