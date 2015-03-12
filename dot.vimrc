@@ -467,3 +467,4 @@ noremap [Gtags]     <NOP>
 nmap    [Prefix]g   [Gtags]
 noremap [Gtags]<CR> <ESC>
 noremap [Gtags]g    :<C-u>Unite -direction=botright -default-action=tabopen gtags/def<CR>
+noremap [Gtags]s    :<C-u>Unite -direction=botright -default-action=tabopen gtags/def:
