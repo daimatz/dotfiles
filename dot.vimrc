@@ -261,6 +261,7 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
 
+set pastetoggle=<C-z>
 nnoremap <CR>         <ESC>
 nnoremap [Prefix]     <NOP>
 nnoremap [Prefix]<CR> <ESC>
@@ -347,6 +348,9 @@ cnoremap <C-m> <CR>
 cnoremap <C-o> <CR><Up>
 
 inoremap <C-@> <C-n>
+
+command -range ToCamel :%s#\%V\%(\%(\k\+\)\)\@<=_\(\k\)#\u\1#g
+command -range ToSnake :%s#\%V\C\(\<\u[a-z0-9]\+\|[a-z0-9]\+\)\(\u\)#\l\1_\l\2#g
 
 " Utility Keybinds
 nnoremap [Util]          <NOP>
