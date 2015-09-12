@@ -9,6 +9,7 @@ export TERM=xterm-256color
 alias clear='echo c'
 alias crontab='crontab -i'
 alias csv='column -s, -t'
+alias csv_to_excel="sed 's/,/\t/g' | nkf -w16L"
 alias gg='git grep -E --break --heading --line-number'
 alias here="open ."
 alias json='python -mjson.tool'
