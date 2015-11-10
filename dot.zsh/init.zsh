@@ -85,7 +85,13 @@ function run_unless() {
 }
 # 名前で検索
 function fd() {
-    find . -name "*$1*"
+    local dir
+    if [ -z "$2" ]; then
+        dir=.
+    else
+        dir=$2
+    fi
+    find $dir -name "*$1*"
 }
 # cd したあとに ls
 function cd() {
