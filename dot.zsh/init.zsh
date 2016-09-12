@@ -49,7 +49,7 @@ function dump_proxy() {
     if [ "$host" = "" ]; then
         host=127.0.0.1
     fi
-    fifo=$(mktemp -u)
+    fifo=$(mktemp -u XXXXXXXXXXXXXXXXX)
     echo "created fifo: $fifo ..."
     mkfifo $fifo
     sigs=(SIGHUP SIGINT SIGQUIT SIGTERM)
@@ -136,6 +136,23 @@ function test() {
         return 1
     fi
     time ./$file < $in
+}
+function create-synchronized-panes() {
+    tmux new-window
+
+    n=$1
+    base=$2
+    for i in $(seq $(($n - 1))); do
+        tmux split-window -v -c "#{pane_current_path}"
+        tmux select-layout even-vertical
+    done
+    for i in $(seq $n); do
+        pane=$(($i - 1))
+        tmux select-pane -t $pane
+        tmux send-keys -t $pane "${base}${i}"
+    done
+    tmux select-pane -t 0
+    tmux set synchronize-panes
 }
 function cabal-sandbox-install-executable() {
     local package_path=$HOME/local/cabal
