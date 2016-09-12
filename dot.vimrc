@@ -115,6 +115,9 @@ NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'solarnz/thrift.vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'rust-lang/rust.vim'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
