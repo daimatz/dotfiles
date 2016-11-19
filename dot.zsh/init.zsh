@@ -24,6 +24,7 @@ if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
 else
     alias simplehttpserver='python -m http.server'
 fi
+alias gg='git grep'
 
 # hogehoge G で hogehoge | grep になるとか
 alias -g G=' | grep'
