@@ -273,7 +273,6 @@ vnoremap [Prefix]     <NOP>
 vmap     <Space>      [Prefix]
 vnoremap [Prefix]<CR> <ESC>
 vnoremap <CR>         <ESC>
-nnoremap /            /\v
 
 nnoremap x "_x
 vnoremap x "_x
