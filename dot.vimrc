@@ -69,6 +69,7 @@ endfunction
 autocmd BufWritePre *.tex call s:replace_comma_dot()
 
 syntax on
+autocmd BufEnter * :syntax sync fromstart
 
 " display encoding, BOM, hex code
 set statusline=%<%F\ %m\ %r%h%w%=%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}[0x%{FencB()}](%l:%v)/%L
