@@ -1,18 +1,23 @@
 #!/bin/bash
 
-# USAGE: run this script by `nohup ~/.copy.sh &> /dev/null &` and write
-#   function pbcopy() { cat /dev/stdin > /vagrant/.copyfile }
+# USAGE: run this script by `nohup ~/.copy.sh <host> &> /dev/null &` and write
+#   function pbcopy() { cat /dev/stdin > ~/.copyfile }
 # to Vagrant's .bashrc.
 
-FILE=~/.copyfile
+HOST=$1
+
+REMOTEFILE=$HOST:.copyfile
+LOCALFILE=~/.copyfile
+
 hashcmd='ls -l'
-checksum=`$hashcmd $FILE`
+checksum=`$hashcmd $LOCALFILE`
 while :; do
-  if [[ ! $checksum = `$hashcmd $FILE` ]]; then
+  scp -oConnectTimeout=5 $REMOTEFILE $LOCALFILE
+  if [[ ! $checksum = `$hashcmd $LOCALFILE` ]]; then
     echo "changed."
-    cat $FILE
-    checksum=`$hashcmd $FILE`
-    pbcopy < $FILE
+    cat $LOCALFILE
+    checksum=`$hashcmd $LOCALFILE`
+    pbcopy < $LOCALFILE
   fi
   sleep 1
 done

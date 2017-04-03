@@ -13,7 +13,7 @@ fi
 while :; do
     if [ -z "$(ps aux | grep "ssh -f -N -D $port $host" | grep -v grep)" ]; then
         echo "tunneling $host:$port ..."
-        ssh -f -N -D $port $host &> /dev/null
+        ssh -f -N -D $port $host &> /dev/null || :
     fi
     sleep 5
 done
