@@ -139,13 +139,20 @@ function test() {
     time ./$file < $in
 }
 function create-synchronized-panes() {
-    tmux new-window
+    if [ -z "$(tmux list-windows | grep -E '\(active\)$' | grep -E '\(1 panes\)')" ]; then
+        err "You must be in an empty window."
+        return 1
+    fi
 
     n=$1
     base=$2
+    layout=$3
+    if [ -z "$layout" ]; then
+        layout=even-vertical
+    fi
     for i in $(seq $(($n - 1))); do
         tmux split-window -v -c "#{pane_current_path}"
-        tmux select-layout even-vertical
+        tmux select-layout $layout
     done
     for i in $(seq $n); do
         pane=$(($i - 1))
