@@ -25,6 +25,7 @@ nnoremap ZZ <Nop>
 set splitbelow
 set splitright
 set ignorecase
+set wildignorecase
 set smartcase
 set wrapscan
 set incsearch
