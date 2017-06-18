@@ -10,7 +10,6 @@ alias clear='echo c'
 alias crontab='crontab -i'
 alias csv='column -s, -t'
 alias csv_to_excel="sed 's/,/\t/g' | nkf -w16L"
-alias gg='git grep -E --break --heading --line-number'
 alias here="open ."
 alias json='python -mjson.tool'
 alias psg='ps aux | grep -v grep | grep'
@@ -24,7 +23,6 @@ if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
 else
     alias simplehttpserver='python -m http.server'
 fi
-alias gg='git grep'
 
 # hogehoge G で hogehoge | grep になるとか
 alias -g G=' | grep'

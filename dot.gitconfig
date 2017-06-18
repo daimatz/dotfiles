@@ -18,6 +18,7 @@
     br = branch
     di = diff
     dif = difftool
+    gr = grep -i -E --break --heading --line-number
     sh = show --word-diff
     oneline = log --pretty=oneline --decorate
     la = log --graph --decorate --pretty=format:'%ad %h (%an):%Cgreen%d%Creset %s' --date=iso
@@ -26,17 +27,6 @@
     now = !"f() { git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     nowa = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     addw = !"git diff -w --no-color | git apply --cached"
-    ignore = !" \
-      f() { \
-          local s=$1; \
-          shift; \
-          while [ $# -gt 0 ]; do \
-              s=\"$s,$1\"; \
-              shift; \
-          done;\
-          curl \"https://www.gitignore.io/api/$s\"; \
-      }; \
-      f"
     sync-master = !" \
       git checkout master && \
       git remote update && \
@@ -59,6 +49,6 @@
     excludesfile = ~/.gitignore
     editor = vim
     quotepath = false
-    pager = "f() { if which diff-highlight &> /dev/null; then diff-highlight | less; else less; fi }; f"
+    pager = "if [ `which diff-highlight &> /dev/null` ]; then diff-highlight | less; else less; fi"
 [ghq]
     root = ~/src
