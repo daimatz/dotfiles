@@ -97,26 +97,19 @@ call neobundle#end()
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/vimproc'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'dag/vim2hs'
 NeoBundle 'thinca/vim-tabrecent'
 NeoBundle 'vim-scripts/Align'
-NeoBundle 'jimenezrick/vimerl'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'hewes/unite-gtags'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'fatih/vim-go'
 NeoBundle 'solarnz/thrift.vim'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'rust-lang/rust.vim'
@@ -382,92 +375,9 @@ endif
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
 
-" Syntastic
-let g:syntastic_mode_map = {
-  \ 'mode': 'active',
-  \ 'active_filetypes': ['php', 'python', 'sh', 'ruby'],
-  \ 'passive_filetypes': ['haskell', 'scala', 'java', 'html', 'cpp', 'c']
-  \}
-
 if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
-
-" Python
-nnoremap [Python]       <NOP>
-nmap     [Prefix]p      [Python]
-nnoremap [Python]<CR>   <ESC>
-nnoremap [Python]d      :<C-u>call jedi#goto_definitions()<CR>
-nnoremap [Python]g      :<C-u>call jedi#goto_assignments()<CR>
-nnoremap [Python]r      :<C-u>call jedi#rename()<CR>
-nnoremap [Python]k      :<C-u>call jedi#documentation_command()<CR>
-nnoremap [Python]n      :<C-u>call jedi#usages()<CR>
-let g:jedi#goto_assignments_command = ""
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = ""
-let g:jedi#usages_command = ""
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = ""
-let g:jedi#show_call_signatures = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-au FileType python setlocal shiftwidth=4
-au FileType python setlocal tabstop=4
-
-" Haskell
-nnoremap [Haskell]      <NOP>
-nmap     [Prefix]h      [Haskell]
-nnoremap [Haskell]<CR>  <ESC>
-nnoremap [Haskell]tt    :<C-u>GhcModType<CR>
-nnoremap [Haskell]tc    :<C-u>GhcModTypeClear<CR>
-nnoremap [Haskell]ti    :<C-u>GhcModTypeInsert<CR>
-nnoremap [Haskell]tt    :<C-u>GhcModType<CR>
-nnoremap [Haskell]t<CR> <ESC>
-nnoremap [Haskell]c     :<C-u>GhcModCheckAndLintAsync<CR>
-nnoremap [Haskell]e     :<C-u>GhcModExpand<CR>
-nnoremap [Haskell]ii    :<C-u>GhcModInfo<CR>
-nnoremap [Haskell]ip    :<C-u>GhcModInfoPreview<CR>
-nnoremap [Haskell]i<CR> <ESC>
-nnoremap [Haskell]s     :<C-u>%!stylish-haskell<CR>
-au FileType haskell setlocal shiftwidth=4
-au FileType haskell setlocal tabstop=4
-au FileType cabal setlocal shiftwidth=4
-au FileType cabal setlocal tabstop=4
-
-" Erlang
-nnoremap [Erlang]     <NOP>
-nmap     [Prefix]e    [Erlang]
-nnoremap [Erlang]<CR> <ESC>
-noremap  [Erlang]c    :<C-u>ErlangDisableShowErrors<CR>:ErlangEnableShowErrors<CR>:w<CR>
-" function! s:ErlangReloadErrors()
-"   ErlangDisableShowErrors
-"   ErlangEnableShowErrors
-"   w
-" endfunction
-" autocmd BufWritePre *.erl call s:ErlangReloadErrors()
-
-" Java (Eclim)
-nnoremap [EclimJava]     <NOP>
-nmap     [Prefix]j       [EclimJava]
-nnoremap [EclimJava]<CR> <ESC>
-nnoremap [EclimJava]s    *N:<C-u>JavaSearchContext<CR>zz
-nnoremap [EclimJava]S    :<C-u>JavaSearch  <BS>
-nnoremap [EclimJava]i    :<C-u>JavaImportOrganize<CR>
-nnoremap [EclimScala]    <NOP>
-nmap     [Prefix]s       [EclimScala]
-nnoremap [EclimScala]<CR> <ESC>
-nnoremap [EclimScala]s   *N:<C-u>ScalaSearch<CR>zz
-au FileType java inoremap <C-@> <C-x><C-o>
-au FileType scala inoremap <C-@> <C-x><C-o>
-let g:EclimJavaSearchSingleResult = 'tabnew'
-let g:EclimScalaSearchSingleResult = 'tabnew'
-let g:EclimCompletionMethod = 'omnifunc'
-let g:neocomplcache_force_omni_patterns.java = '\k\.\k*'
-"let g:neocomplcache_force_omni_patterns.scala = '\k\.\k*'
-
-" Golang
-let g:neocomplcache_force_omni_patterns.go = '\k\.\k*'
-au BufNewFile,BufRead *.go set ft=go sw=4 noexpandtab ts=4
 
 " gtags
 noremap [Gtags]     <NOP>
