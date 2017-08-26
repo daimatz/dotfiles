@@ -103,38 +103,13 @@ function cd() {
         builtin cd $@ && ls
     fi
 }
-# 競技プログラミング用
-function test() {
-    file=$1
-    if [ -f $file.cpp ]; then
-        src=$file.cpp
-    elif [ -f $file.cc ]; then
-        src=$file.cc
-    elif [ -f $file.c ]; then
-        src=$file.c
-    else
-        err "$file source file doen't exist."
-        return 1
-    fi
-
-    err "compiling..."
-    g++ -O2 -std=c++11 $src -o $file
-    if [ $? != 0 ]; then
-        err "compilation failed."
-        return 1
-    else
-        err "success!"
-    fi
-
-    if [ "$2" != "" ]; then
-        in=$2
-    elif [ -f $file.in ]; then
-        in=$file.in
-    else
-        err "input file doesn't exist."
-        return 1
-    fi
-    time ./$file < $in
+function javarun() {
+    local file=$1
+    shift
+    local base=$(basename $file)
+    cp $file /tmp
+    javac /tmp/$base
+    (builtin cd /tmp && java ${base/.java/} $*)
 }
 function create-synchronized-panes() {
     if [ -z "$(tmux list-windows | grep -E '\(active\)$' | grep -E '\(1 panes\)')" ]; then
@@ -159,28 +134,6 @@ function create-synchronized-panes() {
     done
     tmux select-pane -t 0
     tmux set synchronize-panes
-}
-function cabal-sandbox-install-executable() {
-    local package_path=$HOME/local/cabal
-    local executable_path=$HOME/local/bin
-    if [ $# != 1 ]; then
-        err "Usage: cabal-sandbox-install-executable <package>"
-        err "    Please specify only one package."
-        err "    The package will be installed to $package_path,"
-        err "    and the executables will be symlinked to $executable_path."
-        return 1
-    fi
-    local install_path=$package_path/$1
-    local symlink_path=$executable_path/$1
-    [[ ! -d $install_path ]] && mkdir -p $install_path
-    cd $install_path
-    cabal sandbox init
-    cabal update
-    cabal install $1
-    [[ ! -d $executable_path ]] && mkdir -p $executable_path
-    [[ -d $install_path/.cabal-sandbox/bin ]] && ln -sf $install_path/.cabal-sandbox/bin/$1 $symlink_path
-    echo "installed $1 to $install_path and symlinked to $symlink_path"
-    cd - &> /dev/null
 }
 # セパレータ
 # http://qiita.com/items/674b8582772747ede9c3
