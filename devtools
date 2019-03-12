@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# read link of dotfiles, and list up mount files...
+mounts=
+for i in $(find $HOME -type l -maxdepth 1); do
+  mounts="$mounts -v $(readlink $i):/root/$(basename $i)"
+done
+
+# if input is via pipe, use only -i
+# else use -it
+it=
+if [ -p /dev/stdin -a -p /dev/stdout ]; then
+  it="-i"
+elif [ -p /dev/stdin ]; then
+  it="-i"
+elif [ -p /dev/stdout ]; then
+  it="-i"
+else
+  it="-t"
+fi
+
+docker run --rm -v /:/host $mounts $it devtools /bin/bash -c "\
+  cd /host$(pwd) && \
+  $(basename $0) $*"
