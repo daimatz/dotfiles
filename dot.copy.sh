@@ -9,7 +9,7 @@ HOST=$1
 REMOTEFILE=$HOST:.copyfile
 LOCALFILE=~/.copyfile
 
-hashcmd='ls -l'
+hashcmd='gmd5sum'
 checksum=`$hashcmd $LOCALFILE`
 while :; do
   scp -oConnectTimeout=5 $REMOTEFILE $LOCALFILE
