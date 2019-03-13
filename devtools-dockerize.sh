@@ -2,15 +2,20 @@
 
 # docker build -t devtools - < devtools.Dockerfile
 
-mkdir -p $HOME/bin
-cp devtools $HOME/bin
+bin=$HOME/bin
+mkdir -p $bin
+cp devtools $bin
+
 for i in \
-    ag \
-    global \
-    gtags \
-    jq \
-    nkf \
-    tig \
+    "ag -t -t '' -t" \
+    "global -t -t '' -t" \
+    "gtags -t -t '' -t" \
+    "jq -it -i -i -i" \
+    "nkf -it -i -i -i" \
+    "tig -it -it -it -it" \
     ; do
-    ln -sf $HOME/bin/devtools $HOME/bin/$i
+    cmd=$bin/$(echo $i | awk '{print $1}')
+    echo "#!/bin/bash" > $cmd
+    echo "$HOME/bin/devtools $i \$*" >> $cmd
+    chmod +x $cmd
 done
