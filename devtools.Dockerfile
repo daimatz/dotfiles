@@ -50,3 +50,9 @@ RUN cd /tmp && \
   tar xf tig-2.0.3.tar.gz && \
   cd tig-2.0.3 && \
   ./configure && make && make install
+
+# golang
+RUN cd /tmp && \
+  curl -L http://golang.org/dl/go1.10.linux-amd64.tar.gz | \
+  tar -xz -C ~/ && \
+  mv ~/go ~/.goroot
