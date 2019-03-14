@@ -21,6 +21,8 @@ for i in \
     "jq -it -i -i -i" \
     "nkf -it -i -i -i" \
     "tig -it -it -it -it" \
+    "scala -it -it -it -it" \
+    "sbt -it -it -it -it" \
     ; do
     create $bin/$(echo $i | awk '{print $1}') "$i"
 done
