@@ -22,7 +22,6 @@ for i in \
     "nkf -it -i -i -i" \
     "tig -it -it -it -it" \
     "scala -it -it -it -it" \
-    "sbt -it -it -it -it" \
     "java -it -it -it -it" \
     "javac -it -it -it -it" \
     ; do
@@ -31,3 +30,4 @@ done
 
 create $HOME/bin/go "'GOROOT=~/.goroot GOPATH=/host$HOME GOOS=darwin GOARCH=amd64 ~/.goroot/bin/go' -it -it -it -it"
 create $HOME/bin/gorun "'GOROOT=~/.goroot GOPATH=/host$HOME ~/.goroot/bin/go run' -it -it -it -it"
+create $HOME/bin/sbt "'java -Dsbt.ivy.home=/host$HOME/.ivy2 -Divy.home=/host$HOME/.ivy2 -jar /usr/share/sbt/bin/sbt-launch.jar' -it -it -it -it"
