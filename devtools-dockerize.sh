@@ -23,6 +23,8 @@ for i in \
     "tig -it -it -it -it" \
     "scala -it -it -it -it" \
     "sbt -it -it -it -it" \
+    "java -it -it -it -it" \
+    "javac -it -it -it -it" \
     ; do
     create $bin/$(echo $i | awk '{print $1}') "$i"
 done
