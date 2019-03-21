@@ -12,7 +12,6 @@ function create() {
     docker=$2
     dockerarg=$3
     cmd=$4
-    echo "$@"
     echo "#!/bin/bash" > $path
     echo "$HOME/bin/devtools \"$docker\" \"$dockerarg\" $cmd \"\$@\"" >> $path
     chmod +x $path
