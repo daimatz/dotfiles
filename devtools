@@ -1,6 +1,14 @@
 #!/bin/bash
 
-# ./devtools command <no-stdin-stdout> <stdin-only> <stdout-only> <both-stdin-stdout> $*
+# ./devtools \
+#     docker \
+#     dockerarg \
+#     command \
+#     no-stdin-stdout \
+#     stdin-only \
+#     stdout-only \
+#     both-stdin-stdout \
+#     "$@"
 
 # read link of dotfiles, and list up mount files...
 mounts=
@@ -14,12 +22,14 @@ done
 
 # if input is via pipe, use only -i
 # else use -it
-cmd=$1
-a=$2
-b=$3
-c=$4
-d=$5
-shift 5
+docker=$1
+dockerarg=$2
+cmd=$3
+a=$4
+b=$5
+c=$6
+d=$7
+shift 7
 it=
 if [ -p /dev/stdin -a -p /dev/stdout ]; then
   it=$d
@@ -31,4 +41,23 @@ else
   it=$a
 fi
 
-docker run --rm -v /:/host $mounts $it devtools /bin/bash -c "cd /host$(pwd) && $cmd $*"
+case "$docker" in
+    docker )
+        docker \
+            run \
+            $dockerarg \
+            --rm -v /:/host $mounts \
+            -w "/host$(pwd)" \
+            $it \
+            devtools $cmd "$@" ;;
+    docker-compose )
+        docker-compose \
+            -f $HOME/bin/docker-compose.yml \
+            run \
+            $dockerarg \
+            $mounts \
+            -w "/nfshost$(pwd)" \
+            devtools $cmd "$@" ;;
+    * )
+        echo "invalid" >> /dev/stderr
+esac

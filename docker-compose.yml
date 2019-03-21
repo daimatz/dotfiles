@@ -1,0 +1,17 @@
+version: '3.6'
+volumes:
+    nfs:
+        driver: local
+        driver_opts:
+            type: nfs
+            o: addr=host.docker.internal,actimeo=1
+            device: ":/"
+
+services:
+    devtools:
+        image: devtools
+        hostname: devtools
+        container_name: devtools
+        volumes:
+            - nfs:/nfshost
+            - /:/host
