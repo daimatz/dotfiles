@@ -65,3 +65,10 @@ RUN \
   apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
   apt-get update && \
   apt-get install -y openjdk-8-jdk maven scala sbt
+
+# thrift
+RUN cd /tmp && \
+  wget http://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz && \
+  tar xf thrift-0.11.0.tar.gz && \
+  cd thrift-0.11.0 && \
+  ./configure && make && make install

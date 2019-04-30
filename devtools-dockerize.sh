@@ -27,6 +27,8 @@ for i in \
     "docker scala -it -it -it -it" \
     "docker java -it -it -it -it" \
     "docker javac -it -it -it -it" \
+    "docker wget -it -it -it -it" \
+    "docker-compose thrift -it -it -it -it" \
     ; do
     create \
         $bin/$(echo "$i" | awk '{print $2}') \

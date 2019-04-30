@@ -113,6 +113,7 @@ NeoBundle 'tpope/vim-abolish'
 NeoBundle 'solarnz/thrift.vim'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'fatih/vim-go'
 
 """colorscheme
 "NeoBundle 'altercation/vim-colors-solarized'
@@ -257,6 +258,9 @@ let g:markdown_fenced_languages = [
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
+
+"""golang
+let g:go_fmt_command = "goimports"
 
 set pastetoggle=<C-z>
 nnoremap <CR>         <ESC>
