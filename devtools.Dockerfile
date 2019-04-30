@@ -74,3 +74,5 @@ RUN cd /tmp && \
   tar xf thrift-0.11.0.tar.gz && \
   cd thrift-0.11.0 && \
   ./configure && make && make install
+
+RUN ln -sf /usr/bin/nodejs /usr/bin/node
