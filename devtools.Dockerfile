@@ -23,6 +23,8 @@ RUN apt-get update && \
     mercurial \
     mosh \
     nkf \
+    nodejs \
+    npm \
     ntp \
     openssl \
     python-pip \
