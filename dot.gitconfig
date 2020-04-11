@@ -26,6 +26,7 @@
     ru = remote update --prune
     now = !"f() { git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
     nowa = !"f() { git add -A; git commit -am \"`LANG=C date '+%Y-%m-%d (%a) %T'`\"; }; f"
+    nowaa = !"git nowa && git push"
     addw = !"git diff -w --no-color | git apply --cached"
     sync-master = !" \
       git checkout master && \
