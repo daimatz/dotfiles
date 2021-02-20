@@ -86,50 +86,53 @@ function! s:Byte2hex(bytes)
   return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
 endfunction
 
-"""NeoBundle
-filetype off
-set runtimepath+=~/.vim/neobundle.vim
-call neobundle#begin(expand('~/.bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
-
-"""Bundle
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'thinca/vim-tabrecent'
-NeoBundle 'vim-scripts/Align'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'hewes/unite-gtags'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'solarnz/thrift.vim'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'fatih/vim-go'
+""" Plug
+call plug#begin('~/.vim/plugged')
+Plug 'Shougo/vimproc'
+Plug 'thinca/vim-quickrun'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'thinca/vim-tabrecent'
+Plug 'vim-scripts/Align'
+Plug 'Shougo/unite.vim'
+Plug 'h1mesuke/unite-outline'
+Plug 'osyo-manga/unite-quickfix'
+Plug 'hewes/unite-gtags'
+Plug 'derekwyatt/vim-scala'
+Plug 'Shougo/vimshell.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'tpope/vim-abolish'
+Plug 'solarnz/thrift.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-goimports'
 
 """colorscheme
-"NeoBundle 'altercation/vim-colors-solarized'
-"NeoBundle 'croaker/mustang-vim'
-"NeoBundle 'jeffreyiacono/vim-colors-wombat'
-NeoBundle 'nanotech/jellybeans.vim'
-"NeoBundle 'w0ng/vim-hybrid'
-"NeoBundle 'vim-scripts/Lucius'
-"NeoBundle 'vim-scripts/Zenburn'
-"NeoBundle 'mrkn/mrkn256.vim'
-"NeoBundle 'jpo/vim-railscasts-theme'
-"NeoBundle 'therubymug/vim-pyte'
-"NeoBundle 'tomasr/molokai'
-"NeoBundle 'wgibbs/vim-irblack'
-"NeoBundle 'Lokaltog/vim-distinguished'
-"NeoBundle 'matthewtodd/vim-twilight.git'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'croaker/mustang-vim'
+"Plug 'jeffreyiacono/vim-colors-wombat'
+Plug 'nanotech/jellybeans.vim'
+"Plug 'w0ng/vim-hybrid'
+"Plug 'vim-scripts/Lucius'
+"Plug 'vim-scripts/Zenburn'
+"Plug 'mrkn/mrkn256.vim'
+"Plug 'jpo/vim-railscasts-theme'
+"Plug 'therubymug/vim-pyte'
+"Plug 'tomasr/molokai'
+"Plug 'wgibbs/vim-irblack'
+"Plug 'Lokaltog/vim-distinguished'
+"Plug 'matthewtodd/vim-twilight.git'
+call plug#end()
+
+""" complete
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 
 filetype plugin on
 
@@ -141,7 +144,6 @@ if has('syntax')
     autocmd!
     " 背景色は #161616 (22,22,22) ぽいけど Mac では (18,18,18) で綺麗に見える？
     colorscheme jellybeans
-    "悪いスペース類
     autocmd VimEnter,WinEnter * match BadSpace /\(\s\+$\)\|　/
   augroup END
   call BadSpace()
@@ -189,14 +191,6 @@ augroup END
 if has('vim_starting')
   call HighlightCursorLineColumn()
 endif
-
-"""neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_ignore_case = 1
-"TAB, S-TAB で候補の選択
-inoremap <expr><TAB>    pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
 """QuickRun
 " C++11
@@ -260,7 +254,7 @@ let g:necoghc_enable_detailed_browse = 1
 let g:haskell_conceal = 0
 
 """golang
-let g:go_fmt_command = "goimports"
+let g:goimports_simplify = 1  " 保存時に`gofmt -s`を実行する
 
 set pastetoggle=<C-z>
 nnoremap <CR>         <ESC>
@@ -378,10 +372,6 @@ endif
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
-
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
 
 " gtags
 noremap [Gtags]     <NOP>
