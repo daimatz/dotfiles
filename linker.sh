@@ -2,9 +2,10 @@
 
 DOTFILES=$HOME/dotfiles
 
-\rm -rf $HOME/.zsh $HOME/.vim
-ln -s $DOTFILES/dot.zsh $HOME/.zsh
-ln -s $DOTFILES/dot.peco $HOME/.peco
+for i in .zsh .peco; do
+  \rm -rf $HOME/$i
+  ln -s $DOTFILES/dot$i $HOME/$i
+done
 
 for i in $DOTFILES/dot.*; do
     if [ -f $i ]; then
@@ -14,4 +15,4 @@ done
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PluginInstall +qall
+vim +PlugInstall +PlugClean! +qall

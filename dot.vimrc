@@ -143,7 +143,8 @@ if has('syntax')
   augroup BadSpace
     autocmd!
     " 背景色は #161616 (22,22,22) ぽいけど Mac では (18,18,18) で綺麗に見える？
-    colorscheme jellybeans
+    autocmd BufEnter * colorscheme jellybeans
+    " colorscheme jellybeans
     autocmd VimEnter,WinEnter * match BadSpace /\(\s\+$\)\|　/
   augroup END
   call BadSpace()
