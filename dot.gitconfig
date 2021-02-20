@@ -53,3 +53,5 @@
     pager = "if [ `which diff-highlight &> /dev/null` ]; then diff-highlight | less; else less; fi"
 [ghq]
     root = ~/src
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
