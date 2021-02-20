@@ -359,6 +359,7 @@ nnoremap [Util]d         <ESC>I<C-R>=strftime("## %Y-%m-%d (%a) %H:%M")<CR><CR><
 " Unite
 nnoremap [Util]o         m`:<C-u>Unite -direction=botright outline<CR>
 nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
+nnoremap [Util]Q         m`:<C-u>q<CR>:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file_mru<CR>
 nnoremap [Util]g         :<C-u>Unite -direction=botright -buffer-name=search-buffer grep:.<CR>
