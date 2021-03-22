@@ -289,6 +289,7 @@ nnoremap [TABCMD]n       :<C-u>tabnext<CR>
 nnoremap [TABCMD]p       :<C-u>tabprevious<CR>
 nnoremap [TABCMD]e       :<C-u>tabedit  <BS>
 nnoremap [TABCMD]c       :<C-u>tabedit  <BS>
+nnoremap [TABCMD]d       :<C-u>sp<CR><C-w>T<CR>
 nnoremap [TABCMD]h       <C-w>h
 nnoremap [TABCMD]j       <C-w>j
 nnoremap [TABCMD]k       <C-w>k
