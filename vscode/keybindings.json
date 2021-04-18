@@ -202,7 +202,7 @@
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+d",
+    "key": "delete",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "\u0004" },
     "when": "terminalFocus"
