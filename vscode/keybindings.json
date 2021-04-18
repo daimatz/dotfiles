@@ -1,0 +1,186 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "ctrl+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "ctrl+2",
+    "command": "-workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "ctrl+3",
+    "command": "-workbench.action.focusThirdEditorGroup"
+  },
+  {
+   "key": "ctrl+4",
+    "command": "-workbench.action.focusFourthEditorGroup"
+  },
+  {
+    "key": "ctrl+5",
+    "command": "-workbench.action.focusFifthEditorGroup"
+  },
+  {
+    "key": "ctrl+6",
+    "command": "-workbench.action.focusSixthEditorGroup"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "-workbench.action.focusSeventhEditorGroup"
+  },
+  {
+    "key": "ctrl+8",
+    "command": "-workbench.action.focusEighthEditorGroup"
+  },
+  {
+    "key": "ctrl+9",
+    "command": "-workbench.action.lastEditorInGroup"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "-workbench.action.focusSideBar"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "workbench.action.terminal.focus"
+  },
+  {
+    "key": "ctrl+alt+p",
+    "command": "workbench.panel.markers.view.focus"
+  },
+  {
+    "key": "ctrl+cmd+p",
+    "command": "workbench.panel.markers.view.focus"
+  },
+  {
+    "key": "ctrl+alt+o",
+    "command": "workbench.panel.output.focus"
+  },
+  {
+    "key": "ctrl+cmd+o",
+    "command": "workbench.panel.output.focus"
+  },
+  {
+    "key": "ctrl+alt+d",
+    "command": "workbench.panel.repl.view.focus"
+  },
+  {
+    "key": "ctrl+cmd+d",
+    "command": "workbench.panel.repl.view.focus"
+  },
+  {
+    "key": "ctrl+alt+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "ctrl+cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "ctrl+shift+o",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "cmd+shift+o",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+alt+j",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "ctrl+cmd+j",
+    "command": "workbench.action.focusPanel"
+  },
+  {
+    "key": "ctrl+alt+m",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+cmd+m",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "ctrl+cmd+k",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  {
+    "key": "t n",
+    "command": "workbench.action.nextEditor",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t p",
+    "command": "workbench.action.previousEditor",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t space",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t m",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t enter",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t e",
+    "command": "workbench.action.files.openFile",
+    "when": "editorFocus && vim.mode == 'Normal' && !isMac"
+  },
+  {
+    "key": "t e",
+    "command": "workbench.action.files.openFileFolder",
+    "when": "editorFocus && vim.mode == 'Normal' && isMac"
+  },
+  {
+    "key": "t k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t l",
+    "command": "workbench.action.focusRightGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "t h",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "-workbench.action.quickOpenView"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+]

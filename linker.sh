@@ -13,6 +13,9 @@ for i in $DOTFILES/dot.*; do
     fi
 done
 
+mkdir -p $HOME/.local/share/code-server/User
+ln -sf $DOTFILES/vscode/*.json $HOME/.local/share/code-server/User/
+
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +PlugClean! +qall

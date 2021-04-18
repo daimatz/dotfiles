@@ -1,0 +1,103 @@
+{
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.fontSize":12,
+    "editor.minimap.enabled": false,
+    "editor.renderFinalNewline": false,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "scm.countBadge": "off",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontSize": 12,
+    "workbench.colorTheme": "Default Dark+",
+
+    "vim.handleKeys": {
+        "<C-j>": false,
+        "<C-o>": false,
+        "<C-6>": false,
+    },
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"],
+        }, {
+            "before": ["<C-d>"],
+            "commands": ["deleteRight"],
+        }, {
+            "before": ["<C-a>"],
+            "commands": ["cursorHome", "cursorHome"],
+        }, {
+            "before": ["<C-e>"],
+            "commands": ["cursorEnd"],
+        }, {
+            "before": ["<C-n>"],
+            "commands": ["cursorDown"],
+        }, {
+            "before": ["<C-p>"],
+            "commands": ["cursorUp"],
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<C-t>"],
+            "commands": [],
+        }, {
+            "before": ["<Left>"],
+            "after": ["<C-b>"],
+        }, {
+            "before": ["<Right>"],
+            "after": ["<C-f>"],
+        }, {
+            "before": ["<Delete>"],
+            "after": ["<C-d>"],
+        }, {
+            "before": ["<C-a>"],
+            "commands": ["editor.action.selectAll"],
+        }, {
+            "before": ["<Backspace>"],
+            "commands": ["cursorEnd", "cursorHome"],
+        }, {
+            "before": ["#"],
+            "after": ["*", "N", "z", "z"],
+        }, {
+            "before": [";"],
+            "after": [":"],
+        }, {
+            "before": ["S"],
+	        "after": ["0", "C", "<Backspace>", "<Enter>"],
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["G"],
+	        "after": ["G", "k", "0"],
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["<C-t>"],
+            "commands": [],
+        }, {
+            "before": ["<Backspace>"],
+            "commands": ["cursorEnd", "cursorHome"],
+        }, {
+            "before": ["#"],
+            "after": ["*", "N", "z", "z"],
+        }, {
+            "before": [";"],
+            "after": [":"],
+        }, {
+            "before": ["S"],
+	        "after": ["0", "C", "<Backspace>", "<Enter>"],
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["G"],
+	        "after": ["G", "k", "0"],
+        }
+    ],
+    "vim.hlsearch": true,
+    "workbench.editor.showTabs": true,
+}
