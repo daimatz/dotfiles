@@ -11,6 +11,7 @@
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.fontSize": 12,
     "workbench.colorTheme": "Default Dark+",
+    "workbench.editor.showTabs": true,
 
     "vim.handleKeys": {
         "<C-j>": false,
@@ -99,5 +100,4 @@
         }
     ],
     "vim.hlsearch": true,
-    "workbench.editor.showTabs": true,
 }
