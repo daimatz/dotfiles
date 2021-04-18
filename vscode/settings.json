@@ -1,5 +1,6 @@
 {
     "diffEditor.ignoreTrimWhitespace": true,
+    "editor.autoClosingBrackets": "never",
     "editor.fontSize":12,
     "editor.minimap.enabled": false,
     "editor.renderFinalNewline": false,
@@ -57,7 +58,7 @@
             "commands": ["editor.action.selectAll"],
         }, {
             "before": ["<Backspace>"],
-            "commands": ["cursorEnd", "cursorHome"],
+            "after": ["^"],
         }, {
             "before": ["#"],
             "after": ["*", "N", "z", "z"],
@@ -81,7 +82,7 @@
             "commands": [],
         }, {
             "before": ["<Backspace>"],
-            "commands": ["cursorEnd", "cursorHome"],
+            "after": ["^"],
         }, {
             "before": ["#"],
             "after": ["*", "N", "z", "z"],
