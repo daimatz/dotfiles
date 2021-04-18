@@ -183,4 +183,28 @@
     "key": "ctrl+j",
     "command": "-workbench.action.togglePanel"
   },
+  {
+    "key": "home",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u0001" },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "end",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u0005" },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+end",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u000b\u0011" },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u0004" },
+    "when": "terminalFocus"
+  },
 ]
