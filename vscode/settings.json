@@ -101,4 +101,11 @@
         }
     ],
     "vim.hlsearch": true,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.semanticHighlighting.enabled": false,
 }
