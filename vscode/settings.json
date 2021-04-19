@@ -107,6 +107,5 @@
         "**/.ammonite": true
     },
     "java.configuration.checkProjectSettingsExclusions": false,
-    "java.semanticHighlighting.enabled": false,
-    "java.requirements.JDK11Warning": false,
+    "java.semanticHighlighting.enabled": false
 }
