@@ -151,7 +151,7 @@
     "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
   },
   {
-    "key": "space",
+    "key": "ctrl+space",
     "command": "editor.action.showHover",
     "when": "editorFocus && vim.mode == 'Normal'"
   },
