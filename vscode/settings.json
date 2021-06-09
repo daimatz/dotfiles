@@ -28,10 +28,10 @@
             "commands": ["deleteRight"],
         }, {
             "before": ["<C-a>"],
-            "commands": ["cursorHome", "cursorHome"],
+            "after": ["<Esc>", "0", "i"],
         }, {
             "before": ["<C-e>"],
-            "commands": ["cursorEnd"],
+            "after": ["<Esc>", "A"],
         }, {
             "before": ["<C-n>"],
             "commands": ["cursorDown"],
@@ -108,5 +108,7 @@
     },
     "java.configuration.checkProjectSettingsExclusions": false,
     "java.semanticHighlighting.enabled": false,
-    "editor.parameterHints.enabled": false
+    "editor.parameterHints.enabled": false,
+    "workbench.activityBar.visible": false,
+    "editor.cursorBlinking": "solid"
 }
