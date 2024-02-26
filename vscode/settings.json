@@ -67,13 +67,13 @@
             "after": [":"],
         }, {
             "before": ["S"],
-	        "after": ["0", "C", "<Backspace>", "<Enter>"],
+          "after": ["0", "C", "<Backspace>", "<Enter>"],
         }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["G"],
-	        "after": ["G", "k", "0"],
+          "after": ["G", "k", "0"],
         }
     ],
     "vim.visualModeKeyBindings": [
@@ -91,13 +91,13 @@
             "after": [":"],
         }, {
             "before": ["S"],
-	        "after": ["0", "C", "<Backspace>", "<Enter>"],
+          "after": ["0", "C", "<Backspace>", "<Enter>"],
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": ["G"],
-	        "after": ["G", "k", "0"],
+          "after": ["G", "k", "0"],
         }
     ],
     "vim.hlsearch": true,
@@ -110,5 +110,7 @@
     "java.semanticHighlighting.enabled": false,
     "editor.parameterHints.enabled": false,
     "workbench.activityBar.visible": false,
-    "editor.cursorBlinking": "solid"
+    "editor.cursorBlinking": "solid",
+    "autoHide.autoHideReferences": false,
+    "autoHide.autoHidePanel": false
 }
