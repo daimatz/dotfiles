@@ -236,7 +236,6 @@ let g:markdown_fenced_languages = [
 \  'groovy',
 \  'haskell', 'hs=haskell',
 \  'html', 'xml',
-\  'java',
 \  'javascript', 'js=javascript', 'json=javascript',
 \  'ml=ocaml',
 \  'perl', 'pl=perl',
