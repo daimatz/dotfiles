@@ -111,6 +111,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-goimports'
+Plug 'udalov/kotlin-vim'
 
 """colorscheme
 "Plug 'altercation/vim-colors-solarized'
@@ -316,6 +317,8 @@ nnoremap ;     :
 vnoremap ;     :
 nnoremap :     ;
 vnoremap :     ;
+nnoremap <CR>  :
+vnoremap <CR>  :
 nnoremap #     *Nzz
 nnoremap n     nzz
 nnoremap N     Nzz
@@ -362,7 +365,8 @@ nnoremap [Util]q         m`:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]Q         m`:<C-u>q<CR>:<C-u>Unite -direction=botright quickfix<CR>
 nnoremap [Util]b         :<C-u>Unite -direction=botright buffer<CR>
 nnoremap [Util]f         :<C-u>Unite -direction=botright file_mru<CR>
-nnoremap [Util]g         :<C-u>Unite -direction=botright -buffer-name=search-buffer grep:.<CR>
+nnoremap [Util]g         :<C-u>Unite -direction=botright -buffer-name=search-buffer grep:$P<CR><C-R><C-W><CR>
+nnoremap [Util]G         :<C-u>Unite -direction=botright -buffer-name=search-buffer grep:$P<CR>
 nnoremap [Util]u         :<C-u>UniteResume search-buffer<CR>
 nnoremap [Util]l         :<C-u>Unite -direction=botright location_list<CR>
 

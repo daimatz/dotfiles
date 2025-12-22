@@ -51,7 +51,7 @@ pygments:\
 # See gtags(1).
 #---------------------------------------------------------------------
 common:\
-  :skip=HTML/,HTML.pub/,tags,TAGS,ID,y.tab.c,y.tab.h,gtags.files,cscope.files,cscope.out,cscope.po.out,cscope.in.out,SCCS/,RCS/,CVS/,CVSROOT/,{arch}/,autom4te.cache/,*.orig,*.rej,*.bak,*~,#*#,*.swp,*.tmp,*_flymake.*,*_flymake,*.o,*.a,*.so,*.lo,*.zip,*.gz,*.bz2,*.xz,*.lzh,*.Z,*.tgz,*.min.js,*min.css,target/*/classes/,target/streams/*,build/,node_modules/:
+  :skip=HTML/,HTML.pub/,tags,TAGS,ID,y.tab.c,y.tab.h,gtags.files,cscope.files,cscope.out,cscope.po.out,cscope.in.out,SCCS/,RCS/,CVS/,CVSROOT/,{arch}/,autom4te.cache/,*.orig,*.rej,*.bak,*~,#*#,*.swp,*.tmp,*_flymake.*,*_flymake,*.o,*.a,*.so,*.lo,*.zip,*.gz,*.bz2,*.xz,*.lzh,*.Z,*.tgz,*.min.js,*min.css,target/*/classes/,target/streams/*,build/,node_modules/,gen/,dist/:
 #
 # Built-in parsers.
 #
@@ -377,7 +377,7 @@ pygments-parser|Pygments plug-in parser:\
   :langmap=TeX\:.tex.aux.toc:\
   :langmap=Tea\:.tea:\
   :langmap=Treetop\:.treetop.tt:\
-  :langmap=TypeScript\:.ts:\
+  :langmap=TypeScript\:.ts.tsx:\
   :langmap=UrbiScript\:.u:\
   :langmap=VB.net\:.vb.bas:\
   :langmap=VGL\:.rpf:\
