@@ -19,3 +19,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +PlugClean! +qall
 (cd ~/.vim/plugged/vimproc && make)
+
+tmux new-session -d
+tmux send-keys C-t I
+sleep 1
+tmux kill-server
