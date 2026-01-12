@@ -46,8 +46,8 @@ export GHC_VERSION=$(ghc --version 2> /dev/null | awk '{ print $8 }')
 # for D
 export PATH=$HOME/.denv/shims:$HOME/.denv/bin:$PATH
 
-[[ ! -d /tmp/trash ]] && mkdir /tmp/trash
-[[ ! -d /tmp/undo ]] && mkdir /tmp/undo
+[[ ! -d /tmp/trash_$USER ]] && mkdir /tmp/trash_$USER
+[[ ! -d /tmp/undo_$USER ]] && mkdir /tmp/undo_$USER
 
 ## 色設定
 TERM=xterm-256color
