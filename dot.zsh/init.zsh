@@ -13,7 +13,7 @@ alias csv_to_excel="sed 's/,/\t/g' | nkf -w16L"
 alias here="open ."
 alias json='python -mjson.tool'
 alias psg='ps aux | grep -v grep | grep'
-alias rm='mv -f --backup=numbered --target-directory /tmp/trash'
+alias rm="mv -f --backup=numbered --target-directory /tmp/trash_$USER"
 alias sum="awk '{s+=\$1}END{print s}'"
 alias vi='vim -u NONE --noplugin'
 alias vim='P=$(pwd) vim'
