@@ -8,7 +8,7 @@ set nobackup
 set noswapfile
 if version >= 703
   set undofile
-  set undodir=/tmp/undo_$USER
+  set undodir=/tmp/undo
 endif
 set nrformats-=octal
 set timeoutlen=3500
