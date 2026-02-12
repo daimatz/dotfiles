@@ -35,12 +35,13 @@ else alias ls="ls $LSOPTION"; fi
 
 function dclaude() {
   local image=dclaude-$USER
-  local dir=$(pwd | sed -E "s#/home/$USER/src/github.com#/mnt/src/github.com#")
   if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
-    docker run --rm -d -it --net=host -v /home/$USER/src/github.com:/mnt/src/github.com dclaude
-    sleep 3
+    docker run --rm -d -it --net=host \
+      -v $HOME/src/github.com:$HOME/src/github.com \
+      $image
+    sleep 1
   fi
-  docker exec -it -w $dir $(docker ps -q --filter ancestor=$image) claude --dangerously-skip-permissions "$@"
+  docker exec -it -w $(pwd) $(docker ps -q --filter ancestor=$image) claude --dangerously-skip-permissions "$@"
 }
 
 function dump_proxy() {
