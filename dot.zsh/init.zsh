@@ -33,6 +33,16 @@ which gmv &> /dev/null && alias mv='gmv'
 if which gls &> /dev/null; then alias ls="gls $LSOPTION"
 else alias ls="ls $LSOPTION"; fi
 
+function dclaude() {
+  local image=dclaude-$USER
+  local dir=$(pwd | sed -E "s#/home/$USER/src/github.com#/mnt/src/github.com#")
+  if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
+    docker run --rm -d -it --net=host -v /home/$USER/src/github.com:/mnt/src/github.com dclaude
+    sleep 3
+  fi
+  docker exec -it -w $dir $(docker ps -q --filter ancestor=$image) claude --dangerously-skip-permissions "$@"
+}
+
 function dump_proxy() {
     from=$1
     to=$2
