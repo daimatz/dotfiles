@@ -36,7 +36,7 @@ else alias ls="ls $LSOPTION"; fi
 function dclaude() {
   local image=dclaude-$USER
   if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
-    docker run --rm -d -it --net=host \
+    docker run --rm -d -it --hostname=$image --net=host \
       -v $HOME/src/github.com:$HOME/src/github.com \
       $image
     sleep 1
