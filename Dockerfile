@@ -16,8 +16,8 @@ RUN cd /tmp/env \
 RUN cd /tmp/env \
   && wget https://github.com/k0kubun/mitamae/releases/download/$(cat MITAMAE_VERSION)/mitamae-aarch64-linux -O mitamae \
   && chmod +x mitamae \
-  && ./mitamae local -j itamae/"$USER".json itamae/adduser.rb \
-  && ./mitamae local -j itamae/"$USER".json itamae/base/*
+  && ./mitamae local -j itamae/"${USER}".json itamae/adduser.rb \
+  && ./mitamae local -j itamae/"${USER}".json itamae/base/*
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN cd
 
@@ -33,14 +33,17 @@ RUN set -eux; \
   # HOME 等の所有権を合わせる（必要に応じて範囲調整）
   chown -R "${UID}:${GID}" "/home/${USER}"
 
-RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
+RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n \
+  | bash -s install lts \
+  && mkdir "/home/${USER}/.claude" \
+  && echo "{\"language\":\"ja\"}" > "/home/${USER}/.claude/settings.json"
 RUN npm i -g typescript typescript-language-server
 RUN npm i -g @openai/codex
 
-USER "$USER"
-ENV PATH="/home/$USER/.local/bin:${PATH}"
+USER "${USER}"
+ENV PATH="/home/${USER}/.local/bin:${PATH}"
 RUN curl -fsSL https://claude.ai/install.sh | bash
-RUN cd "/home/$USER/dotfiles/" \
+RUN cd "/home/${USER}/dotfiles/" \
   && git submodule update --init \
   && bash linker.sh
 
