@@ -14,7 +14,7 @@ RUN cd /tmp/env \
   | awk -F'tag/' '{print $2}' \
   | sed -e 's/\r$//' > MITAMAE_VERSION
 RUN cd /tmp/env \
-  && wget https://github.com/k0kubun/mitamae/releases/download/$(cat MITAMAE_VERSION)/mitamae-aarch64-linux -O mitamae \
+  && wget https://github.com/k0kubun/mitamae/releases/download/$(cat MITAMAE_VERSION)/mitamae-$(uname -m)-linux -O mitamae \
   && chmod +x mitamae \
   && ./mitamae local -j itamae/"${USER}".json itamae/adduser.rb \
   && ./mitamae local -j itamae/"${USER}".json itamae/base/*
@@ -33,10 +33,7 @@ RUN set -eux; \
   # HOME 等の所有権を合わせる（必要に応じて範囲調整）
   chown -R "${UID}:${GID}" "/home/${USER}"
 
-RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n \
-  | bash -s install lts \
-  && mkdir "/home/${USER}/.claude" \
-  && echo "{\"language\":\"ja\"}" > "/home/${USER}/.claude/settings.json"
+RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
 RUN npm i -g typescript typescript-language-server
 RUN npm i -g @openai/codex
 

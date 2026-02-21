@@ -36,12 +36,27 @@ else alias ls="ls $LSOPTION"; fi
 function dclaude() {
   local image=dclaude-$USER
   if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
-    docker run --rm -d -it --hostname=$image --net=host \
+    docker run --rm -d -it \
+      --hostname=$image \
+      --net=host \
+      -e CLAUDE_SANDBOX=1 \
+      -e DOTENVX_PRIVATE_KEY \
       -v $HOME/src/github.com:$HOME/src/github.com \
+      -v $HOME/.claude:$HOME/.claude \
+      -v $HOME/.claude.json=$HOME/.claude.json \
       $image
     sleep 1
   fi
-  docker exec -it -w $(pwd) $(docker ps -q --filter ancestor=$image) claude --dangerously-skip-permissions "$@"
+  if [[ "${1:-}" == "--shell" ]]; then
+    docker exec -it -w "$(pwd)" \
+      "$(docker ps -q --filter ancestor="$image")" \
+      bash
+    return 0
+  fi
+  docker exec -it -w "$(pwd)" \
+    "$(docker ps -q --filter ancestor=$image)" \
+    claude --dangerously-skip-permissions \
+    "$@"
 }
 
 function dump_proxy() {
