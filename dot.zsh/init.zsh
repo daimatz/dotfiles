@@ -41,9 +41,10 @@ function dclaude() {
       --net=host \
       -e CLAUDE_SANDBOX=1 \
       -e DOTENVX_PRIVATE_KEY \
+      -v $(pwd):$(pwd) \
       -v $HOME/src/github.com:$HOME/src/github.com \
       -v $HOME/.claude:$HOME/.claude \
-      -v $HOME/.claude.json=$HOME/.claude.json \
+      -v $HOME/.claude.json:$HOME/.claude.json \
       $image
     sleep 1
   fi
@@ -233,7 +234,8 @@ zstyle ':completion:*' completer _expand _complete _prefix _approximate _list
 
 # http://www.zsh.org/mla/users/2009/msg01019.html
 zmodload zsh/complist
-bindkey -M menuselect '' .accept-line # メニューの後1回の Enter で決定
+bindkey -M menuselect '
+' .accept-line # メニューの後1回の Enter で決定
 bindkey -M menuselect '[Z' reverse-menu-complete
 bindkey -M menuselect ' ' accept-line
 
