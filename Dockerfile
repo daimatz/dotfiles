@@ -9,6 +9,7 @@ RUN apt update && apt install -y curl wget sudo git
 
 # 既存のGIDがあれば再利用、なければユーザーのグループを変更
 RUN set -eux; \
+    groupadd $USER; \
     if getent group "${GID}" >/dev/null; then \
         GROUP_NAME="$(getent group "${GID}" | cut -d: -f1)"; \
     elif getent group "${USER}" >/dev/null; then \
@@ -31,7 +32,6 @@ RUN set -eux; \
     \
     echo "${USER} ALL=(ALL) NOPASSWD:ALL" > "/etc/sudoers.d/${USER}"; \
     chmod 0440 "/etc/sudoers.d/${USER}"; \
-    groupadd $USER; \
     sudo -u $USER mkdir -p /home/${USER}/.ssh
 
 RUN git clone https://github.com/daimatz/env /tmp/env
