@@ -6,6 +6,34 @@ ARG UID
 ARG GID
 
 RUN apt update && apt install -y curl wget sudo git
+
+# 既存のGIDがあれば再利用、なければユーザーのグループを変更
+RUN set -eux; \
+    if getent group "${GID}" >/dev/null; then \
+        GROUP_NAME="$(getent group "${GID}" | cut -d: -f1)"; \
+    elif getent group "${USER}" >/dev/null; then \
+        groupmod -g "${GID}" "${USER}"; \
+        GROUP_NAME="${USER}"; \
+    else \
+        groupadd -g "${GID}" "${USER}"; \
+        GROUP_NAME="${USER}"; \
+    fi; \
+    \
+    if id -u "${USER}" >/dev/null 2>&1; then \
+        usermod -u "${UID}" -g "${GROUP_NAME}" -s /bin/bash "${USER}"; \
+    elif getent passwd "${UID}" >/dev/null; then \
+        EXISTING_USER="$(getent passwd "${UID}" | cut -d: -f1)"; \
+        usermod -l "${USER}" -d "/home/${USER}" -m "${EXISTING_USER}"; \
+        usermod -g "${GROUP_NAME}" -s /bin/bash "${USER}"; \
+    else \
+        useradd -m -u "${UID}" -g "${GROUP_NAME}" -s /bin/bash "${USER}"; \
+    fi; \
+    \
+    echo "${USER} ALL=(ALL) NOPASSWD:ALL" > "/etc/sudoers.d/${USER}"; \
+    chmod 0440 "/etc/sudoers.d/${USER}"; \
+    groupadd $USER; \
+    sudo -u $USER mkdir -p /home/${USER}/.ssh
+
 RUN git clone https://github.com/daimatz/env /tmp/env
 RUN cd /tmp/env \
   && curl -I https://github.com/itamae-kitchen/mitamae/releases/latest \
@@ -16,22 +44,9 @@ RUN cd /tmp/env \
 RUN cd /tmp/env \
   && wget https://github.com/k0kubun/mitamae/releases/download/$(cat MITAMAE_VERSION)/mitamae-$(uname -m)-linux -O mitamae \
   && chmod +x mitamae \
-  && ./mitamae local -j itamae/"${USER}".json itamae/adduser.rb \
   && ./mitamae local -j itamae/"${USER}".json itamae/base/*
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN cd
-
-# 既存のGIDがあれば再利用、なければユーザーのグループを変更
-RUN set -eux; \
-  if getent group "${GID}" >/dev/null; then \
-    EXISTING_GROUP="$(getent group "${GID}" | cut -d: -f1)"; \
-    usermod -g "${EXISTING_GROUP}" "${USER}"; \
-  else \
-    groupmod -g "${GID}" "${USER}" || true; \
-  fi; \
-  usermod -u "${UID}" "${USER}"; \
-  # HOME 等の所有権を合わせる（必要に応じて範囲調整）
-  chown -R "${UID}:${GID}" "/home/${USER}"
 
 RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
 RUN npm i -g typescript typescript-language-server
