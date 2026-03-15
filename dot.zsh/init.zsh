@@ -53,6 +53,14 @@ function dclaude() {
       "$(docker ps -q --filter ancestor="$image")" \
       bash
     return 0
+  elif [[ "${1:-}" == "--webui" ]]; then
+    docker exec -it -w "$(pwd)" \
+      "$(docker ps -q --filter ancestor="$image")" \
+      claude-code-webui \
+      --host 0.0.0.0 \
+      --port 8891 \
+      --claude-path "/home/${USER}/dotfiles/claude-skip-permissions.sh"
+    return 0
   fi
   docker exec -it -w "$(pwd)" \
     "$(docker ps -q --filter ancestor=$image)" \

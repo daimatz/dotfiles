@@ -51,6 +51,7 @@ RUN cd
 RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
 RUN npm i -g typescript typescript-language-server
 RUN npm i -g @openai/codex
+RUN npm i -g claude-code-webui
 
 USER "${USER}"
 ENV PATH="/home/${USER}/.local/bin:${PATH}"
