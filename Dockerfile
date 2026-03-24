@@ -52,9 +52,12 @@ RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s ins
 RUN npm i -g typescript typescript-language-server
 RUN npm i -g @openai/codex
 RUN npm i -g claude-code-webui
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:${PATH}"
+RUN pip install langfuse
 
 USER "${USER}"
-ENV PATH="/home/${USER}/.local/bin:${PATH}"
+ENV PATH="/opt/venv/bin:/home/${USER}/.local/bin:${PATH}"
 RUN curl -fsSL https://claude.ai/install.sh | bash
 RUN cd "/home/${USER}/dotfiles/" \
   && git submodule update --init \

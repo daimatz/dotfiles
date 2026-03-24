@@ -45,6 +45,7 @@ function dclaude() {
       -v $HOME/src/github.com:$HOME/src/github.com \
       -v $HOME/.claude:$HOME/.claude \
       -v $HOME/.claude.json:$HOME/.claude.json \
+      $(echo $DCLAUDE_EXTRA_ARGS) \
       $image
     sleep 1
   fi
