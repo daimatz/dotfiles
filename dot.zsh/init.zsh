@@ -45,6 +45,7 @@ function dclaude() {
       -v $HOME/src/github.com:$HOME/src/github.com \
       -v $HOME/.claude:$HOME/.claude \
       -v $HOME/.claude.json:$HOME/.claude.json \
+      -v $HOME/dotfiles:$HOME/dotfiles \
       $(echo $DCLAUDE_EXTRA_ARGS) \
       $image
     sleep 1
@@ -66,6 +67,7 @@ function dclaude() {
   docker exec -it -w "$(pwd)" \
     "$(docker ps -q --filter ancestor=$image)" \
     claude --dangerously-skip-permissions \
+    --settings $HOME/dotfiles/settings.skip-permissions.json \
     "$@"
 }
 
