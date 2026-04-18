@@ -14,8 +14,7 @@ alias here="open ."
 alias json='python -mjson.tool'
 alias psg='ps aux | grep -v grep | grep'
 alias sum="awk '{s+=\$1}END{print s}'"
-alias vi='vim -u NONE --noplugin'
-alias vim='P=$(pwd) vim'
+alias vim='P=$(pwd) nvim'
 alias xml='xmllint --format -'
 if [ "`python --version 2>&1 | grep 'Python 2'`" != "" ]; then
     alias simplehttpserver='python -m SimpleHTTPServer'

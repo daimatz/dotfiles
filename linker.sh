@@ -12,14 +12,13 @@ done
 for i in $DOTFILES/dot.*; do
     if [ "$i" = "$DOTFILES/dot.config" ]; then
         mkdir -p $HOME/.config
-	for j in $DOTFILES/dot.config/*; do
+  for j in $DOTFILES/dot.config/*; do
             ln -sf $j $HOME/.config/`basename $j `
         done
     elif [ -f $i ]; then
         ln -sf $i $HOME/`basename $i | sed 's/^dot//'`
     fi
 done
-exit 1
 
 tmux new-session -d
 tmux send-keys C-t I

@@ -27,9 +27,6 @@ vim.cmd("colorscheme jellybeans")
 
 vim.g.mapleader = " "
 
--- 起動時 cwd を $P に固定（:tabedit $P/... で参照）
-vim.env.P = vim.fn.getcwd()
-
 -- ===== 基本設定 =====
 vim.opt.encoding = "utf-8"
 vim.opt.hidden = true
