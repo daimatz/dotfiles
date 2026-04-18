@@ -10,15 +10,16 @@ for i in .zsh .peco; do
 done
 
 for i in $DOTFILES/dot.*; do
-    if [ -f $i ]; then
+    if [ "$i" = "$DOTFILES/dot.config" ]; then
+        mkdir -p $HOME/.config
+	for j in $DOTFILES/dot.config/*; do
+            ln -sf $j $HOME/.config/`basename $j `
+        done
+    elif [ -f $i ]; then
         ln -sf $i $HOME/`basename $i | sed 's/^dot//'`
     fi
 done
-
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +PlugClean! +qall
-(cd ~/.vim/plugged/vimproc && make)
+exit 1
 
 tmux new-session -d
 tmux send-keys C-t I
