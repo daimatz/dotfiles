@@ -244,8 +244,7 @@ zstyle ':completion:*' completer _expand _complete _prefix _approximate _list
 
 # http://www.zsh.org/mla/users/2009/msg01019.html
 zmodload zsh/complist
-bindkey -M menuselect '
-' .accept-line # メニューの後1回の Enter で決定
+bindkey -M menuselect '^M' .accept-line # メニューの後1回の Enter で決定
 bindkey -M menuselect '[Z' reverse-menu-complete
 bindkey -M menuselect ' ' accept-line
 
