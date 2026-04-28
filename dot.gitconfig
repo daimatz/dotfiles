@@ -7,10 +7,12 @@
     rebase = true
 [color]
     ui = auto
-[diff]
-    tool = vimdiff
 [difftool]
     prompt = false
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [alias]
     co = checkout
     st = status -s
@@ -48,7 +50,7 @@
       f"
 [core]
     excludesfile = ~/.gitignore
-    editor = vim
+    editor = nvim
     quotepath = false
     pager = "if [ `which diff-highlight &> /dev/null` ]; then diff-highlight | less; else less; fi"
 [ghq]
