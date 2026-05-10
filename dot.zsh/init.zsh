@@ -4,6 +4,7 @@ function err() {
 
 # why?
 export TERM=xterm-256color
+export EDITOR=nvim
 
 # alias
 alias clear='echo c'
