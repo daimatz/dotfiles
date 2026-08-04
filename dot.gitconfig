@@ -23,7 +23,7 @@
     gr = grep -i -E --break --heading --line-number
     sh = show --word-diff
     oneline = log --pretty=oneline --decorate
-    dl = !"f() { git worktree add .git/__upd $1 && cd .git/__upd && git pull && cd .. && git worktree remove .git/upd; }; f"
+    dl = !"f() { git worktree add .git/__upd $1 && cd .git/__upd && git pull && cd .. && git worktree remove .git/__upd; }; f"
     la = log --graph --decorate --pretty=format:'%ad %h (%an):%Cgreen%d%Creset %s' --date=iso
     cat = !"f() { git show $1:$2; }; f"
     ru = remote update --prune
