@@ -107,6 +107,7 @@ map("c", "jj", "<Esc>", opts)
 -- ; と : を交換
 map({ "n", "v" }, ";", ":", { noremap = true })
 map({ "n", "v" }, ":", ";", { noremap = true })
+map({ "n", "v" }, "<CR>", ":", { noremap = true })
 
 -- 検索後は中央寄せ
 map("n", "#", "*Nzz", opts)
