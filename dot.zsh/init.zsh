@@ -43,6 +43,9 @@ function sb() {
   if [[ -z "$(docker volume ls --quiet --filter "name=^opencode-home$")" ]]; then
     docker volume create opencode-home
   fi
+  if [[ -z "$(docker volume ls --quiet --filter "name=^opencode-auth$")" ]]; then
+    docker volume create opencode-auth
+  fi
 
   local claude_json="$HOME/.coding-agent-sandbox/claude.json"
   if [[ ! -f "$claude_json" ]]; then
@@ -64,6 +67,7 @@ function sb() {
       -v claude-home:"$HOME/.claude" \
       -v codex-home:"$HOME/.codex" \
       -v opencode-home:"$HOME/.config/opencode" \
+      -v opencode-auth:"$HOME/.local/share/opencode" \
       -v "$claude_json":"$HOME/.claude.json" \
       $(echo $CASBX_EXTRA_ARGS) \
       $image
