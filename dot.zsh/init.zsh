@@ -34,42 +34,52 @@ which gmv &> /dev/null && alias mv='gmv'
 if which gls &> /dev/null; then alias ls="gls $LSOPTION"
 else alias ls="ls $LSOPTION"; fi
 
-function dclaude() {
-  local image=dclaude-$USER
+function sb() {
+  local image=coding-agent-sandbox
+  if [[ -z "$(docker volume ls --quiet --filter "name=^claude-home$")" ]]; then
+    docker volume create claude-home
+  fi
+  if [[ -z "$(docker volume ls --quiet --filter "name=^codex-home$")" ]]; then
+    docker volume create codex-home
+  fi
+  if [[ -z "$(docker volume ls --quiet --filter "name=^opencode-home$")" ]]; then
+    docker volume create opencode-home
+  fi
+
   if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
     docker run --rm -d -it \
       --hostname=$image \
       --net=host \
-      -e CLAUDE_SANDBOX=1 \
+      -e CODING_AGENT_SANDBOX=1 \
       -e DOTENVX_PRIVATE_KEY \
       -v $(pwd):$(pwd) \
       -v $HOME/src/github.com:$HOME/src/github.com \
-      -v $HOME/.claude:$HOME/.claude \
-      -v $HOME/.claude.json:$HOME/.claude.json \
       -v $HOME/dotfiles:$HOME/dotfiles \
-      $(echo $DCLAUDE_EXTRA_ARGS) \
+      -v claude-home:$HOME/.claude \
+      -v codex-home:$HOME/.codex \
+      -v opencode-home:$HOME/.config/opencode \
+      $(echo $CASBX_EXTRA_ARGS) \
       $image
     sleep 1
   fi
-  if [[ "${1:-}" == "--shell" ]]; then
+  if [[ "${1:-}" == "claude" ]]; then
+    shift
     docker exec -it -w "$(pwd)" \
-      "$(docker ps -q --filter ancestor="$image")" \
-      bash
-    return 0
-  elif [[ "${1:-}" == "--webui" ]]; then
+      "$(docker ps -q --filter ancestor=$image)" \
+      claude --dangerously-skip-permissions \
+      --settings $HOME/dotfiles/settings.skip-permissions.json \
+      "$@"
+  elif [[ "${1:-}" == "codex" ]]; then
+    shift
     docker exec -it -w "$(pwd)" \
-      "$(docker ps -q --filter ancestor="$image")" \
-      claude-code-webui \
-      --host 0.0.0.0 \
-      --port 8891 \
-      --claude-path "/home/${USER}/dotfiles/claude-skip-permissions.sh"
-    return 0
+      "$(docker ps -q --filter ancestor=$image)" \
+      codex --dangerously-bypass-approvals-and-sandbox \
+      "$@"
+  else
+    docker exec -it -w "$(pwd)" \
+      "$(docker ps -q --filter ancestor=$image)" \
+      "$@"
   fi
-  docker exec -it -w "$(pwd)" \
-    "$(docker ps -q --filter ancestor=$image)" \
-    claude --dangerously-skip-permissions \
-    --settings $HOME/dotfiles/settings.skip-permissions.json \
-    "$@"
 }
 
 function dump_proxy() {

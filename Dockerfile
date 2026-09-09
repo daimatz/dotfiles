@@ -1,4 +1,4 @@
-# docker build --build-arg USER=$USER -t dclaude-$USER --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
+# docker build --build-arg USER=$USER -t coding-agent-sandbox --build-arg UID=$(id -u) --build-arg GID=$(id -g) .
 FROM ubuntu:24.04
 
 ARG USER
@@ -49,16 +49,16 @@ RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN cd
 
 RUN curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s install lts
-RUN npm i -g typescript typescript-language-server
-RUN npm i -g @openai/codex
-RUN npm i -g claude-code-webui
-RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:${PATH}"
-RUN pip install langfuse
+RUN chsh -s /usr/bin/zsh "${USER}"
 
 USER "${USER}"
-ENV PATH="/opt/venv/bin:/home/${USER}/.local/bin:${PATH}"
+ENV NPM_CONFIG_PREFIX="/home/${USER}/.local"
+ENV PATH="/home/${USER}/.opencode/bin:/home/${USER}/.local/bin:${PATH}"
+
+RUN npm i -g typescript typescript-language-server
+RUN curl -fsSL https://chatgpt.com/codex/install.sh | sh
 RUN curl -fsSL https://claude.ai/install.sh | bash
+RUN curl -fsSL https://opencode.ai/install | bash
 RUN cd "/home/${USER}/dotfiles/" \
   && git submodule update --init \
   && bash linker.sh
