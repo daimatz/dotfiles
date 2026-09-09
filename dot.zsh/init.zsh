@@ -44,18 +44,27 @@ function sb() {
     docker volume create opencode-home
   fi
 
+  local claude_json="$HOME/.coding-agent-sandbox/claude.json"
+  if [[ ! -f "$claude_json" ]]; then
+    mkdir -p "$HOME/.coding-agent-sandbox"
+    printf '{}\n' > "$claude_json"
+    chmod 600 "$claude_json"
+  fi
+
   if [[ -z $(docker ps -q --filter ancestor=$image) ]]; then
+    mkdir -p "$HOME/src/github.com"
     docker run --rm -d -it \
       --hostname=$image \
       --net=host \
       -e CODING_AGENT_SANDBOX=1 \
       -e DOTENVX_PRIVATE_KEY \
-      -v $(pwd):$(pwd) \
-      -v $HOME/src/github.com:$HOME/src/github.com \
-      -v $HOME/dotfiles:$HOME/dotfiles \
-      -v claude-home:$HOME/.claude \
-      -v codex-home:$HOME/.codex \
-      -v opencode-home:$HOME/.config/opencode \
+      -v "$(pwd)":"$(pwd)" \
+      -v "$HOME/src/github.com":"$HOME/src/github.com" \
+      -v "$HOME/dotfiles":"$HOME/dotfiles" \
+      -v claude-home:"$HOME/.claude" \
+      -v codex-home:"$HOME/.codex" \
+      -v opencode-home:"$HOME/.config/opencode" \
+      -v "$claude_json":"$HOME/.claude.json" \
       $(echo $CASBX_EXTRA_ARGS) \
       $image
     sleep 1
