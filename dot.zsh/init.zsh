@@ -2,8 +2,6 @@ function err() {
     echo $* > /dev/stderr
 }
 
-# why?
-export TERM=xterm-256color
 export EDITOR=nvim
 
 # alias
@@ -110,16 +108,14 @@ function realpath() {
         err "usage: realpath <path>"
         return
     fi
-    python -c "import os.path; print(os.path.realpath('$1'))"
+    python -c 'import os.path,sys; print(os.path.realpath(sys.argv[1]))' "$1"
 }
 function relpath() {
     if [ "$1" = "" ]; then
         err "usage: relpath <to> [from]"
         return
     fi
-    to=$1
-    from=$2
-    python -c "import os.path; print(os.path.relpath('$to', '$from'))"
+    python -c 'import os.path,sys; print(os.path.relpath(sys.argv[1], sys.argv[2]))' "$1" "${2:-}"
 }
 # そのプロセスがいなければ立ち上げる
 function run_unless() {
@@ -466,7 +462,6 @@ update_prompt() {
 
     local bar_left="$prompt_bar_left"
 
-    LANG=C my_vcs_info_function >&/dev/null
     local prompt_bar_right="${my_vcs_info}[%~]"
 
     local bar_right_without_path="${prompt_bar_right:s/%~//}"

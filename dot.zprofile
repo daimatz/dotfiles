@@ -50,5 +50,4 @@ export PATH=$HOME/.denv/shims:$HOME/.denv/bin:$PATH
 [[ ! -d /tmp/undo ]] && mkdir /tmp/undo
 
 ## 色設定
-TERM=xterm-256color
 # LANG=C perl ~/.zsh/256colors2.pl > /dev/null
