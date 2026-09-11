@@ -60,7 +60,6 @@ function sb() {
       --hostname=$image \
       --net=host \
       -e CODING_AGENT_SANDBOX=1 \
-      -e DOTENVX_PRIVATE_KEY \
       -v "$(pwd)":"$(pwd)" \
       -v "$HOME/src/github.com":"$HOME/src/github.com" \
       -v "$HOME/dotfiles":"$HOME/dotfiles" \
