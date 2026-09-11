@@ -69,7 +69,7 @@ function sb() {
       -v opencode-home:"$HOME/.config/opencode" \
       -v opencode-auth:"$HOME/.local/share/opencode" \
       -v "$claude_json":"$HOME/.claude.json" \
-      $(echo $CASBX_EXTRA_ARGS) \
+      $(echo $CODING_AGENT_SANDBOX_EXTRA_ARGS) \
       $image
     sleep 1
   fi
