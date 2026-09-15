@@ -57,8 +57,8 @@ vim.opt.foldlevel = 10000
 vim.opt.list = true
 vim.opt.listchars = { tab = "^ ", trail = " " }
 
-vim.opt.textwidth = 80
-vim.opt.colorcolumn = "81,82"
+vim.opt.textwidth = 120
+vim.opt.colorcolumn = "121,122"
 
 vim.opt.backspace = "indent,eol,start"
 vim.opt.whichwrap = "b,s,h,l,<,>,[,]"
