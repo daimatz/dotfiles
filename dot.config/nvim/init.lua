@@ -13,6 +13,58 @@ require("lazy").setup({
     "nanotech/jellybeans.vim",
     priority = 1000, -- ← 重要：テーマは最優先で読み込む
   },
+  {
+    "milanglacier/minuet-ai.nvim",
+    lazy = false,
+    config = function()
+      require("minuet").setup({
+        provider = "openai_compatible",
+        provider_options = {
+          openai_compatible = {
+            name = "OpenCode Go",
+            end_point = "https://opencode.ai/zen/go/v1/chat/completions",
+            api_key = function() return os.getenv("OPENCODE_API_KEY") end,
+            model = "qwen3.8-flash", -- 補完用途なので thinking を切れる flash 系を使う
+            stream = true,
+            optional = {
+              max_tokens = 64, -- 表示はストリーム完走後なので生成長がそのまま待ち時間になる
+              top_p = 0.9,
+              reasoning_effort = "none",
+            },
+          },
+        },
+        curl_extra_args = { "-H", "x-opencode-session: nvim-" .. vim.fn.getpid() .. "-" .. os.time() },
+        n_completions = 1,
+        context_window = 4000,
+        throttle = 300,
+        debounce = 150,
+        request_timeout = 3,
+        notify = "error",
+        virtualtext = {
+          auto_trigger_ft = { "*" },
+          auto_trigger_ignore_ft = { "markdown", "text", "gitcommit" },
+          keymap = {
+            accept = "<A-A>",
+            accept_line = "<A-a>",
+            accept_n_lines = "<A-z>",
+            next = "<A-]>",
+            prev = "<A-[>",
+            dismiss = "<A-e>",
+          },
+        },
+      })
+
+      -- Tab: 候補が出ていれば受け入れ、無ければ通常の Tab
+      vim.keymap.set("i", "<Tab>", function()
+        local vt = require("minuet.virtualtext").action
+        if vt.is_visible() then
+          vt.accept()
+        else
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n")
+        end
+      end, { noremap = true, silent = true, desc = "minuet accept / Tab" })
+    end,
+  },
 })
 
 vim.opt.background = "dark"
