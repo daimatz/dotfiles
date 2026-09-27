@@ -16,6 +16,7 @@ require("lazy").setup({
   {
     "milanglacier/minuet-ai.nvim",
     lazy = false,
+    cond = function() return (os.getenv("OPENCODE_API_KEY") or "") ~= "" end,
     config = function()
       require("minuet").setup({
         provider = "openai_compatible",
